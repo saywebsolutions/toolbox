@@ -5,10 +5,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
-# .bashrc
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -27,6 +23,8 @@ HISTFILESIZE=10000000
 alias w="w | sort"
 alias who="who | sort"
 alias last="last -a | less"
+alias ls='ls --color=auto'
+alias ll='ls -la --color=auto'
 alias grpe="grep --color"
 alias grep="grep --color"
 alias vi="vim"
