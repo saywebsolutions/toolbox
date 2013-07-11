@@ -24,7 +24,7 @@ alias w="w | sort"
 alias who="who | sort"
 alias last="last -a | less"
 alias ls='ls --color=auto'
-alias ll='ls -la --color=auto'
+alias ll='ls -lah --color=auto'
 alias grpe="grep --color"
 alias grep="grep --color"
 alias vi="vim"
