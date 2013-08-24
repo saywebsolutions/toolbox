@@ -15,3 +15,4 @@ set showmode            " show mode at bottom of screen
 set cmdheight=2         " set the command height
 set showmatch           " show matching brackets (),{},[]
 set mat=5               " show matching brackets for 0.5 seconds
+set ff=unix             " unix line endings
