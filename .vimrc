@@ -1,5 +1,17 @@
 " .vimrc kjones
 
+" ----- General settings ------------------------------------------------------
+set backspace=indent,eol,start
+set number
+set showcmd
+set incsearch
+set hlsearch
+
+" ----- Tabs vs. Spaces -------------------------------------------------------
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
 syntax on               " syntax highlighting
 colorscheme desert      " set colorscheme
 set t_Co=256
