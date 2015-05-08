@@ -30,8 +30,9 @@ alias grep="grep --color"
 alias vi="vim"
 
 PAGER=less
-VISUAL=vi
-FCEDIT=vi
+VISUAL=vim
+FCEDIT=vim
+EDITOR=vim
 
 PS1='\[\e[0;32m\]\u\[\e[m\] \[\e[1;34m\]\w\[\e[m\] \[\e[1;32m\]\$\[\e[m\] '
 # root
