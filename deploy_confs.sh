@@ -1,6 +1,6 @@
 #!/bin/bash
 cd ~/
-for x in '.vimrc' '.screenrc' '.toprc' '.bashrc';
+for x in '.vimrc' '.screenrc' '.toprc' '.bashrc' '.gitconfig';
 do
     echo "Deploying $x..."
     ln -sf "repositories/configs/$x"
