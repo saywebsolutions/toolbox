@@ -25,6 +25,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
 	export CLICOLOR=1
 	export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+	alias ll='ls -lah'
 
 else
 
