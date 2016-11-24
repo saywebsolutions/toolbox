@@ -119,6 +119,16 @@ bindsym $mod+Shift+0 move container to workspace 10
 #hide borders
 hide_edge_borders vertical
 
+#custom functionality
+#bindsym $mod+Shift+Print exec scrot -s -e 'mv $f /tmp/ && gimp /tmp/$f' --release
+
+#screenshot active window
+bindsym Print exec "scrot -u ~/Dropbox/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png"
+#screenshot custom selection
+bindsym --release Shift+Print exec "scrot -s ~/Dropbox/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png"
+#screenshot whole screen(s)
+bindsym Ctrl+Print exec "scrot ~/Dropbox/Screenshots/`date +%Y-%m-%d_%H:%M:%S`.png"
+
 #programs to start
 exec --no-startup-id xfce4-terminal
 exec --no-startup-id xfce4-terminal

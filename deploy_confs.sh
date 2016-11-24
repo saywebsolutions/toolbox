@@ -21,7 +21,7 @@ fi
 for x in 'config';
 do
     echo "Deploying .config/i3/$x..."
-    ln -sf "repos/configs/.config/i3/$x" ".config/i3/$x"
+    ln -sf "../../repos/configs/.config/i3/$x" ".config/i3/$x"
 done
 
 echo -e "\nHopefully, great success."
