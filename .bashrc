@@ -20,14 +20,25 @@ HOSTNAME=`/bin/hostname`
 HISTSIZE=1000000
 HISTFILESIZE=10000000
 
-alias w="w | sort"
-alias who="who | sort"
-alias last="last -a | less"
-alias ls='ls --color=auto'
-alias ll='ls -lah --color=auto'
-alias grpe="grep --color"
-alias grep="grep --color"
-alias vi="vim"
+# Mac OSX
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+	export CLICOLOR=1
+	export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+	alias ll='ls -lah'
+
+else
+
+	alias w="w | sort"
+	alias who="who | sort"
+	alias last="last -a | less"
+	alias ls='ls --color=auto'
+	alias ll='ls -lah --color=auto'
+	alias grpe="grep --color"
+	alias grep="grep --color"
+	alias vi="vim"
+
+fi
 
 PAGER=less
 VISUAL=vim
