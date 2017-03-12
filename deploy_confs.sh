@@ -24,6 +24,17 @@ do
     ln -sf "../../repos/configs/.config/i3/$x" ".config/i3/$x"
 done
 
+if [ ! -d ".config/nvim" ]; then
+    mkdir .config/nvim
+    echo 'Created .config/nvim/ directory.'
+fi
+
+for x in 'init.vim';
+do
+    echo "Deploying .config/nvim/$x..."
+    ln -sf "../../repos/configs/.vimrc" ".config/nvim/$x"
+done
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
