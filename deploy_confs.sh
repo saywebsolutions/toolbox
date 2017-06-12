@@ -35,6 +35,45 @@ do
     ln -sf "../../repos/configs/.vimrc" ".config/nvim/$x"
 done
 
+# VIM PACKAGE MANAGEMENT USING PATHOGEN + PLUGINS
+
+if [ ! -a ".vim/autoload/pathogen.vim" ]; then
+
+  echo -e "\nInstalling Pathogen for managing vim plugins."
+  echo -e "\r"
+
+  mkdir -p .vim/autoload .vim/bundle && curl -LSso .vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+fi
+
+if [ ! -d ".vim/bundle/vim-gitgutter" ]; then
+  cd .vim/bundle && git clone git://github.com/airblade/vim-gitgutter.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-surround" ]; then
+  cd .vim/bundle && git clone git://github.com/tpope/vim-surround.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-eunuch" ]; then
+  cd .vim/bundle && git clone git://github.com/tpope/vim-eunuch.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/ctrlp.vim" ]; then
+  cd .vim/bundle && git clone git://github.com/ctrlpvim/ctrlp.vim && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/ultisnips" ]; then
+  cd .vim/bundle && git clone git://github.com/SirVer/ultisnips.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-snippets" ]; then
+  cd .vim/bundle && git clone git://github.com/honza/vim-snippets.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-airline" ]; then
+  cd .vim/bundle && git clone git://github.com/bling/vim-airline && cd ~/
+fi
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
