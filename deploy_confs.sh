@@ -74,6 +74,10 @@ if [ ! -d ".vim/bundle/vim-airline" ]; then
   cd .vim/bundle && git clone git://github.com/bling/vim-airline && cd ~/
 fi
 
+if [ ! -d ".vim/bundle/vim-airline-themes" ]; then
+  cd .vim/bundle && git clone git://github.com/vim-airline/vim-airline-themes && cd ~/
+fi
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
