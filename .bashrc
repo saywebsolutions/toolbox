@@ -29,14 +29,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
 else
 
+  SAL_USE_VCLPLUGIN=gtk
+
 	alias w="w | sort"
 	alias who="who | sort"
 	alias last="last -a | less"
 	alias ls='ls --color=auto'
-	alias ll='ls -lah --color=auto'
 	alias grpe="grep --color"
 	alias grep="grep --color"
 	alias vi="vim"
+  alias ll="du -sh * | sort -rh | head -n 25"
 
 fi
 
