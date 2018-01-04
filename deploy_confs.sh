@@ -78,6 +78,22 @@ if [ ! -d ".vim/bundle/vim-airline-themes" ]; then
   cd .vim/bundle && git clone git://github.com/vim-airline/vim-airline-themes && cd ~/
 fi
 
+if [ ! -d ".vim/bundle/vim-css-color" ]; then
+  cd .vim/bundle && git clone git://github.com/ap/vim-css-color && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-php-cs-fixer" ]; then
+  cd .vim/bundle && git clone git://github.com/stephpy/vim-php-cs-fixer.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-blade" ]; then
+  cd .vim/bundle && git clone git://github.com/jwalton512/vim-blade.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/PHP-Indenting-for-VIm" ]; then
+  cd .vim/bundle && git clone git://github.com/2072/PHP-Indenting-for-VIm.git && cd ~/
+fi
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
