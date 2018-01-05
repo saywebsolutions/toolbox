@@ -57,3 +57,5 @@ MANPATH="/usr/local/man:/usr/man:/usr/local/share/man:/usr/share/man:/usr/share/
 function homestead() {
     ( cd ~/repos/Homestead && vagrant $* )
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
