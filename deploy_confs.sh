@@ -37,7 +37,7 @@ done
 
 # VIM PACKAGE MANAGEMENT USING PATHOGEN + PLUGINS
 
-if [ ! -a ".vim/autoload/pathogen.vim" ]; then
+if [ ! -e ".vim/autoload/pathogen.vim" ]; then
 
   echo -e "\nInstalling Pathogen for managing vim plugins."
   echo -e "\r"
