@@ -54,7 +54,40 @@ let g:netrw_browse_split = 3
 
 " ----- Plugin settings / keymaps ---------------------------------------------
 
-"ctrlp
+if executable('fzf')
+
+"fzf
+
+  set rtp+=~/gocode/fzf
+
+  " FZF {{{
+  " <S-p> to search files
+  nnoremap <silent> <S-p> :FZF -m<cr>
+
+  " <M-p> for open buffers
+  nnoremap <silent> <M-p> :Buffers<cr>
+
+  " <M-S-p> for MRU
+  nnoremap <silent> <M-S-p> :History<cr>
+
+  " Use fuzzy completion relative filepaths across directory
+  imap <expr> <c-x><c-f> fzf#vim#complete#path('git ls-files $(git rev-parse --show-toplevel)')
+
+  " Better command history with q:
+  command! CmdHist call fzf#vim#command_history({'right': '40'})
+  nnoremap q: :CmdHist<CR>
+
+  " Better search history
+  command! QHist call fzf#vim#search_history({'right': '40'})
+  nnoremap q/ :QHist<CR>
+
+  command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
+  " }}}
+
+else
+
+" CtrlP fallback
+
   "let g:ctrlp_map = '<c-p>'
   let g:ctrlp_map = '<S-p>'
   let g:ctrlp_cmd = 'CtrlP'
@@ -73,6 +106,8 @@ let g:netrw_browse_split = 3
     \ 'AcceptSelection("e")': ['<c-t>'],
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
+
+end
 
 "airline
 "  let g:airline#extensions#tabline#enabled = 1

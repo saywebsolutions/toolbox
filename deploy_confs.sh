@@ -98,6 +98,14 @@ if [ ! -d ".vim/bundle/vim-rooter" ]; then
   cd .vim/bundle && git clone git://github.com/airblade/vim-rooter.git && cd ~/
 fi
 
+if [ ! -d ".vim/bundle/fzf" ]; then
+  cd .vim/bundle && git clone git://github.com/junegunn/fzf.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/fzf.vim" ]; then
+  cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
+fi
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
