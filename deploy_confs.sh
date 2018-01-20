@@ -70,13 +70,13 @@ if [ ! -d ".vim/bundle/vim-snippets" ]; then
   cd .vim/bundle && git clone git://github.com/honza/vim-snippets.git && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/vim-airline" ]; then
-  cd .vim/bundle && git clone git://github.com/bling/vim-airline && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-airline" ]; then
+#  cd .vim/bundle && git clone git://github.com/bling/vim-airline && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-airline-themes" ]; then
-  cd .vim/bundle && git clone git://github.com/vim-airline/vim-airline-themes && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-airline-themes" ]; then
+#  cd .vim/bundle && git clone git://github.com/vim-airline/vim-airline-themes && cd ~/
+#fi
 
 if [ ! -d ".vim/bundle/vim-css-color" ]; then
   cd .vim/bundle && git clone git://github.com/ap/vim-css-color && cd ~/
