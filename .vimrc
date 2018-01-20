@@ -110,9 +110,9 @@ else
 end
 
 "airline
-  let g:airline#extensions#tabline#enabled = 1
-  let g:airline_powerline_fonts = 1
-  let g:airline_theme='understated'
+"  let g:airline#extensions#tabline#enabled = 1
+"  let g:airline_powerline_fonts = 1
+"  let g:airline_theme='understated'
 
 "vim-php-cs-fixer
   " If php-cs-fixer is in $PATH, you don't need to define line below
