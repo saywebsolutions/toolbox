@@ -54,6 +54,9 @@ let g:netrw_browse_split = 3
 
 " ----- Plugin settings / keymaps ---------------------------------------------
 
+"vim-rooter
+  let g:rooter_patterns = ['.git/']
+
 if executable('fzf')
 
 "fzf
