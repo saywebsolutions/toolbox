@@ -35,7 +35,7 @@ rm -rf configs-master
 cd ../../
 
 if [ ! -d "configs/.git" ]; then
-  ln -sf $DIRNAME configs
+  ln -snf $DIRNAME configs
 else
   echo 'VCS detected, aborting update.'
 fi
