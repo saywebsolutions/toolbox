@@ -24,7 +24,15 @@ unzip master.zip -d $DIRNAME
 
 rm master.zip
 
+cd $DIRNAME/configs-master
+
+cp -rT . ../
+
 cd ../
+
+rm -rf configs-master
+
+cd ../../
 
 if [ ! -d "configs/.git" ]; then
   ln -sf $DIRNAME configs
