@@ -106,6 +106,12 @@ if [ ! -d ".vim/bundle/fzf.vim" ]; then
   cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
 fi
 
+#dependencies
+if [ ! -d ".fzf" ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
+fi
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
