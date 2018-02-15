@@ -7,7 +7,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
+    . /etc/bashrc
 fi
 
 # User specific aliases and functions
@@ -23,22 +23,22 @@ HISTFILESIZE=10000000
 # Mac OSX
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
-	export CLICOLOR=1
-	export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
-	alias ll='ls -lah'
+    export CLICOLOR=1
+    export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+    alias ll='ls -lah'
 
 else
 
-  SAL_USE_VCLPLUGIN=gtk
+    SAL_USE_VCLPLUGIN=gtk
 
-	alias w="w | sort"
-	alias who="who | sort"
-	alias last="last -a | less"
-	alias ls='ls --color=auto'
-	alias grpe="grep --color"
-	alias grep="grep --color"
-	alias vi="vim"
-  alias ll="du -sh * | sort -rh | head -n 25"
+    alias w="w | sort"
+    alias who="who | sort"
+    alias last="last -a | less"
+    alias ls='ls --color=auto'
+    alias grpe="grep --color"
+    alias grep="grep --color"
+    alias vi="vim"
+    alias ll="du -sh * | sort -rh | head -n 25"
 
 fi
 
@@ -67,6 +67,6 @@ PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
