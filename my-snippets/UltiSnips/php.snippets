@@ -5,3 +5,8 @@ snippet script "CLI Script Init" bm
 
 $0
 endsnippet
+
+snippet log_ex "Log Exception" bm
+\Log::error(__METHOD__." failed.\tMessage: ".$e->getMessage());
+$0
+endsnippet
