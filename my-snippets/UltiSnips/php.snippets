@@ -80,3 +80,14 @@ if ( $httpCode != 200 ){
 
 curl_close($ch);
 endsnippet
+
+snippet hasMany "Eloquent has many relationship" bm
+    /**
+     * ${3:desc}
+     */
+    public function ${1:name}()
+    {
+        return $this->hasMany('${2:relation}');
+    }
+$0
+endsnippet
