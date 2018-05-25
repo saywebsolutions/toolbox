@@ -82,12 +82,23 @@ curl_close($ch);
 endsnippet
 
 snippet hasMany "Eloquent has many relationship" bm
-    /**
-     * ${3:desc}
-     */
-    public function ${1:name}()
-    {
-        return $this->hasMany('${2:relation}');
-    }
+/**
+ * ${3:desc}
+ */
+public function ${1:name}()
+{
+    return $this->hasMany('${2:relation}');
+}
+$0
+endsnippet
+
+snippet belongsTo "Eloquent belongs to relationship" bm
+/**
+ * ${3:desc}
+ */
+public function ${1:name}()
+{
+    return $this->belongsTo('${2:relation}');
+}
 $0
 endsnippet
