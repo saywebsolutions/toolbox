@@ -107,3 +107,13 @@ snippet cli_out "CLI output" bm
 echo "\n[".date('Y-m-d H:i:s')."] - ${1:message}";
 $0
 endsnippet
+
+snippet fillable "Fillable eloquent property" bm
+/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+protected $fillable = [${1:fields}];
+$0
+endsnippet
