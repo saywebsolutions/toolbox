@@ -6,6 +6,11 @@ snippet script "CLI Script Init" bm
 $0
 endsnippet
 
+snippet log "Log error" bm
+\Log::error(${1:message});
+$0
+endsnippet
+
 snippet log_ex "Log Exception" bm
 \Log::error(__METHOD__." failed.\tMessage: ".$e->getMessage());
 $0
@@ -116,4 +121,25 @@ snippet fillable "Fillable eloquent property" bm
  */
 protected $fillable = [${1:fields}];
 $0
+endsnippet
+
+snippet gf_debug_fields "Debug Gravity Forms submitted fields" bm
+	echo '<pre>';
+    foreach ( $form['fields'] as $field ) {
+        $inputs = $field->get_entry_inputs();
+        if ( is_array( $inputs ) ) {
+            foreach ( $inputs as $input ) {
+                $value = rgar( $entry, (string) $input['id'] );
+                echo "\nInput ID: ".$input['id'].' - '.$value;
+            }
+        } else {
+            $value = rgar( $entry, (string) $field->id );
+            echo "\nInput ID: ".$field->id.' - '.$value;
+        }
+    }
+    exit;
+endsnippet
+
+snippet gf_debug_log "Write to Gravity Forms debug log" bm
+GFCommon::log_debug(${1:message});
 endsnippet
