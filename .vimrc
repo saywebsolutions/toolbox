@@ -112,12 +112,16 @@ else
 
 end
 
+
 "airline
+
 "  let g:airline#extensions#tabline#enabled = 1
 "  let g:airline_powerline_fonts = 1
 "  let g:airline_theme='understated'
 
+
 "vim-php-cs-fixer
+
   " If php-cs-fixer is in $PATH, you don't need to define line below
   " couldn't get the plugin to work without defining this explicitly, even though path was setup correctly
   let g:php_cs_fixer_path = "~/.composer/vendor/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
@@ -133,6 +137,11 @@ end
   let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
   let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
   let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+
+"ultisnips custom snippets dir
+
+  let g:UltiSnipsSnippetDirectories = ["UltiSnips", "my-snippets/UltiSnips"]
 
 autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade " Fix blade auto-indent
 

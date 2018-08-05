@@ -1,0 +1,145 @@
+snippet script "CLI Script Init" bm
+#!/usr/bin/php -q
+
+<?php
+
+$0
+endsnippet
+
+snippet log "Log error" bm
+\Log::error(${1:message});
+$0
+endsnippet
+
+snippet log_ex "Log Exception" bm
+\Log::error(__METHOD__." failed.\tMessage: ".$e->getMessage());
+$0
+endsnippet
+
+snippet cache_meth "Boilerplate for method with caching and try/catch" bm
+$cacheName = self::cacheNameFromOptions(__METHOD__, $options);                                                      
+
+if( ! $results = \Cache::get($cacheName, false)){                                                                   
+
+    try{
+
+        \Cache::put($cacheName, $results, 360);                                                                     
+
+    } catch (\Exception $e) {                                                                                       
+        $msg = $e->getMessage();                                                                                    
+        $request = $this->soapClient->__getLastRequest();
+        \Log::error("Call to ".__METHOD__." failed. Options: ".json_encode(@$options)."\tMessage: ".$msg."\tRequest:".$request);       
+    }                                                                                                               
+
+    if($debug){
+        \Log::info("Cache miss / no cache on call to ".__METHOD__." method. Options: ".json_encode(@$options)."\tRequest: ".$this->soapClient->__getLastRequest());
+    }
+ 
+}else{
+    if($debug){
+        \Log::info("Cache hit to ".__METHOD__." method. Options: ".json_encode(@$options));
+    }
+}
+endsnippet
+
+snippet ctrl_meth "Laravel controller method" bm
+public function ${1:name}(${2:$param}){
+
+    $0
+
+    return view('${3:view}')
+        ->with('pageTitle', '${4:pageTitle}')
+        ->with('pageDescription', '${5:pageDescription}')
+    ;    
+
+}    
+endsnippet
+
+snippet curl_get "curl get request boilerplate" bm
+
+$endpoint = "${1:endpoint}";
+$ch = curl_init();
+
+$options = array(
+    CURLOPT_URL            => $endpoint,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_HEADER         => true,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_ENCODING       => "",
+    CURLOPT_AUTOREFERER    => true,
+    CURLOPT_CONNECTTIMEOUT => 120,
+    CURLOPT_TIMEOUT        => 120,
+    CURLOPT_MAXREDIRS      => 10,
+);
+
+curl_setopt_array( $ch, $options );
+$response = curl_exec($ch); 
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+if ( $httpCode != 200 ){
+    echo "Return code is {$httpCode} \n"
+        .curl_error($ch);
+} else {
+    echo "<pre>".htmlspecialchars($response)."</pre>";
+}
+
+curl_close($ch);
+endsnippet
+
+snippet hasMany "Eloquent has many relationship" bm
+/**
+ * ${3:desc}
+ */
+public function ${1:name}()
+{
+    return $this->hasMany('${2:relation}');
+}
+$0
+endsnippet
+
+snippet belongsTo "Eloquent belongs to relationship" bm
+/**
+ * ${3:desc}
+ */
+public function ${1:name}()
+{
+    return $this->belongsTo('${2:relation}');
+}
+$0
+endsnippet
+
+snippet cli_out "CLI output" bm
+echo "\n[".date('Y-m-d H:i:s')."] - ${1:message}";
+$0
+endsnippet
+
+snippet fillable "Fillable eloquent property" bm
+/**
+ * The attributes that are mass assignable.
+ *
+ * @var array
+ */
+protected $fillable = [${1:fields}];
+$0
+endsnippet
+
+snippet gf_debug_fields "Debug Gravity Forms submitted fields" bm
+	echo '<pre>';
+    foreach ( $form['fields'] as $field ) {
+        $inputs = $field->get_entry_inputs();
+        if ( is_array( $inputs ) ) {
+            foreach ( $inputs as $input ) {
+                $value = rgar( $entry, (string) $input['id'] );
+                echo "\nInput ID: ".$input['id'].' - '.$value;
+            }
+        } else {
+            $value = rgar( $entry, (string) $field->id );
+            echo "\nInput ID: ".$field->id.' - '.$value;
+        }
+    }
+    exit;
+endsnippet
+
+snippet gf_debug_log "Write to Gravity Forms debug log" bm
+GFCommon::log_debug(${1:message});
+endsnippet

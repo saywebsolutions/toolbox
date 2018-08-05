@@ -112,6 +112,9 @@ if [ ! -d ".fzf" ]; then
   ~/.fzf/install
 fi
 
+echo -e "\nLinking custom snippets."
+ln -sf "../repos/configs/my-snippets/" ".vim/"
+
 echo -e "\nHopefully, great success."
 echo -e "\r"
 
