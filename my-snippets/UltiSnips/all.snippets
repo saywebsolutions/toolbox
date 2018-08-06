@@ -24,6 +24,13 @@ snippet bs3_input "bootstrap 3 input field" bm
 $0
 endsnippet
 
+snippet sui_field "semantic ui input field" bm
+<div class="$0field">
+    <label>${1:label}</label>
+    <input type="text" id="${2:id}" name="${3:name}" placeholder="${4:placeholder}">
+</div>
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
 endsnippet
