@@ -31,6 +31,12 @@ snippet sui_field "semantic ui input field" bm
 </div>
 endsnippet
 
+snippet sui_toggle "semantic ui toggle checkbox" bm
+<div class="ui toggle checkbox">
+    <input id="${1:id}" type="checkbox" name="${2:name}" value="1" @if (${3:checked}$0) checked @endif >
+</div>
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
 endsnippet
