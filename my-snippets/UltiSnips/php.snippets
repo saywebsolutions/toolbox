@@ -143,3 +143,8 @@ endsnippet
 snippet gf_debug_log "Write to Gravity Forms debug log" bm
 GFCommon::log_debug(${1:message});
 endsnippet
+
+snippet gf_field_validation "GF custom field validation" bm
+add_filter("gform_field_validation_${1:form_id}_${2:field_id}", "${3:function_name}", 10, 4);
+$0
+endsnippet
