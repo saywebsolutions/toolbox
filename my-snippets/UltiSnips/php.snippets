@@ -149,7 +149,10 @@ add_filter("gform_field_validation_${1:form_id}_${2:field_id}", "${3:function_na
 $0
 endsnippet
 
-snippet lm_soft_delete "laravel migration soft delete" bm
+snippet lm_soft_del "laravel migration soft delete" bm
 $table->softDeletes();
-$0
+endsnippet
+
+snippet lm_drop_col "laravel migration drop column" bm
+$table->dropColumn('${1:col}');
 endsnippet
