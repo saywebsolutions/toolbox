@@ -148,3 +148,8 @@ snippet gf_field_validation "GF custom field validation" bm
 add_filter("gform_field_validation_${1:form_id}_${2:field_id}", "${3:function_name}", 10, 4);
 $0
 endsnippet
+
+snippet lm_soft_delete "laravel migration soft delete" bm
+$table->softDeletes();
+$0
+endsnippet
