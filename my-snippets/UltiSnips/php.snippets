@@ -160,3 +160,11 @@ endsnippet
 snippet l_use_soft_del "laravel use soft deletes" bm
 use Illuminate\Database\Eloquent\SoftDeletes;
 endsnippet
+
+snippet lm_str "laravel migration for string column" bm
+$table->string('${1:col}');
+endsnippet
+
+snippet lm_str_null "laravel migration for nullable string column" bm
+$table->string('${1:col}')->nullable();
+endsnippet
