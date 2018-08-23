@@ -168,3 +168,8 @@ endsnippet
 snippet lm_str_null "laravel migration for nullable string column" bm
 $table->string('${1:col}')->nullable();
 endsnippet
+
+snippet scan_dir "php scandir strategy" bm
+$path = '${1:path}';
+$files = array_diff(scandir($path), ['.', '..']);
+endsnippet
