@@ -81,8 +81,14 @@ snippet sui_def_table "semantic ui definition table" bm
 </table>
 endsnippet
 
-snippet js_has_own_prop "check if js object has a given property" bm
+snippet js_obj_has_prop "check if js object has a given property" bm
 if($1.hasOwnProperty($2)){
+    $0
+}
+endsnippet
+
+snippet js_arr_has_key "check if js array has a given key" bm
+if("$1" in $2){
     $0
 }
 endsnippet
