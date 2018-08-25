@@ -1,4 +1,4 @@
-snippet mediaq "media queries" bm
+snippet css_media_q "media queries" bm
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 
@@ -20,7 +20,6 @@ snippet bs3_input "bootstrap 3 input field" bm
     <label for="${1:for}">${2:label}</label>
     <input type="${3:text}" class="form-control" id="${4:id}" name="${5:name}" placeholder="${6:placeholder}" value="{{ old('${7:old_value}', ${8:property}) }}">
 </div>
-
 $0
 endsnippet
 
@@ -82,3 +81,8 @@ snippet sui_def_table "semantic ui definition table" bm
 </table>
 endsnippet
 
+snippet js_has_own_prop "check if js object has a given property" bm
+if($1.hasOwnProperty($2)){
+    $0
+}
+endsnippet
