@@ -40,4 +40,4 @@ else
   echo 'VCS detected, aborting update.'
 fi
 
-~/repos/configs/.deploy_confs.sh
+~/repos/configs/./deploy_confs.sh
