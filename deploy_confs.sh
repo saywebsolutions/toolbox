@@ -106,6 +106,10 @@ if [ ! -d ".vim/bundle/fzf.vim" ]; then
   cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
 fi
 
+if [ ! -d ".vim/bundle/neomake.vim" ]; then
+  cd .vim/bundle && git clone git://github.com/neomake/neomake.git && cd ~/
+fi
+
 #dependencies
 if [ ! -d ".fzf" ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

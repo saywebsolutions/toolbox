@@ -112,6 +112,8 @@ else
 
 end
 
+"neomake for linting https://github.com/neomake/neomake
+  call neomake#configure#automake('nrwi', 500)
 
 "airline
 
