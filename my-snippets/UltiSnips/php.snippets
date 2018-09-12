@@ -16,7 +16,7 @@ snippet log_ex "Log Exception" bm
 $0
 endsnippet
 
-snippet cache_meth "Boilerplate for method with caching and try/catch" bm
+snippet l_cache_meth "Boilerplate for method with caching and try/catch" bm
 $cacheName = self::cacheNameFromOptions(__METHOD__, $options);                                                      
 
 if( ! $results = \Cache::get($cacheName, false)){                                                                   
@@ -40,6 +40,19 @@ if( ! $results = \Cache::get($cacheName, false)){
         \Log::info("Cache hit to ".__METHOD__." method. Options: ".json_encode(@$options));
     }
 }
+endsnippet
+
+snippet l_cache_rem "Boilerplate for laraevl cache remember" bm
+$$1 = \Cache::remember("${2:cache_name}", ${3:length_seconds}, function () use ($$4) {
+
+    $0
+
+    // laravel will not cache null, so if no match cache false
+    $1 = $1 ?? false;
+
+    return $$1;
+
+});
 endsnippet
 
 snippet ctrl_meth "Laravel controller method" bm
