@@ -46,9 +46,11 @@ if [ ! -e ".vim/autoload/pathogen.vim" ]; then
 
 fi
 
-if [ ! -d ".vim/bundle/vim-gitgutter" ]; then
-  cd .vim/bundle && git clone git://github.com/airblade/vim-gitgutter.git && cd ~/
-fi
+cd ~/
+
+#if [ ! -d ".vim/bundle/vim-gitgutter" ]; then
+#  cd .vim/bundle && git clone git://github.com/airblade/vim-gitgutter.git && cd ~/
+#fi
 
 if [ ! -d ".vim/bundle/vim-surround" ]; then
   cd .vim/bundle && git clone git://github.com/tpope/vim-surround.git && cd ~/
@@ -106,8 +108,13 @@ if [ ! -d ".vim/bundle/fzf.vim" ]; then
   cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/neomake.vim" ]; then
+if [ ! -d ".vim/bundle/neomake" ]; then
   cd .vim/bundle && git clone git://github.com/neomake/neomake.git && cd ~/
+fi
+
+# vim swap and backup files dir
+if [ ! -d ".vim/swapfiles" ]; then
+  mkdir -p ~/.vim/swapfiles && cd ~/
 fi
 
 #dependencies
