@@ -42,6 +42,8 @@ else
 
 fi
 
+alias sk="ssh-keygen -t rsa -b 4096 -o -a 100"
+
 PAGER=less
 VISUAL=vim
 FCEDIT=vim
