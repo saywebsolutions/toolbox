@@ -41,7 +41,6 @@ snippet hidden_input "hidden input field" bm
 endsnippet
 
 snippet jq_ready "jquery ready boilerplate" bm
-
 $(document)
 
     .ready(function() {
@@ -57,6 +56,18 @@ snippet jq_click "jquery click" bm
 .on('click', '${1:element}', function(e){
     $0
 })
+endsnippet
+
+snippet bs_r "bootstrap row" bm
+<div class="row">
+    $0
+</div>
+endsnippet
+
+snippet bs_c "bootstrap col" bm
+<div class="col $1">
+    $0
+</div>
 endsnippet
 
 snippet sui_def_table "semantic ui definition table" bm

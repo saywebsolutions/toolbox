@@ -6,7 +6,9 @@ set -euo pipefail
 ########################
 
 # Name of the user to create and grant sudo privileges
-USERNAME=sammy
+USERNAME=rimando
+
+SSH_PORT=22
 
 # Whether to copy over the root user's `authorized_keys` file to the new sudo
 # user.
@@ -23,6 +25,18 @@ OTHER_PUBLIC_KEYS_TO_ADD=(
 ####################
 ### SCRIPT LOGIC ###
 ####################
+
+apt-get update
+apt-get -y upgrade
+apt-get -y autoremove
+
+# on 18.04 this pulls in apache and php 7.2 currently
+apt install -y php
+apt install -y php-mbstring php-xml php-json php-zip
+
+apt install -y redis-server
+sed --in-place 's/^supervised.*/supervised systemd/g' /etc/redis/redis.conf
+systemctl reload redis.service
 
 # Add sudo user and grant privileges
 useradd --create-home --shell "/bin/bash" --groups sudo "${USERNAME}"
@@ -70,5 +84,7 @@ if sshd -t -q; then
 fi
 
 # Add exception for SSH and then enable UFW firewall
-ufw allow OpenSSH
+ufw allow 80
+ufw allow 443
+#ufw allow ${SSH_PORT}
 ufw --force enable
