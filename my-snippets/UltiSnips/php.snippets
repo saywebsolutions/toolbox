@@ -16,7 +16,11 @@ snippet log_ex "Log Exception" bm
 $0
 endsnippet
 
-snippet cache_meth "Boilerplate for method with caching and try/catch" bm
+snippet l_route "laravel route" bm
+Route::${1:get}('/$2', '$3@$4')->name('$4');
+endsnippet
+
+snippet l_cache_meth "Boilerplate for method with caching and try/catch" bm
 $cacheName = self::cacheNameFromOptions(__METHOD__, $options);                                                      
 
 if( ! $results = \Cache::get($cacheName, false)){                                                                   
@@ -40,6 +44,19 @@ if( ! $results = \Cache::get($cacheName, false)){
         \Log::info("Cache hit to ".__METHOD__." method. Options: ".json_encode(@$options));
     }
 }
+endsnippet
+
+snippet l_cache_rem "Boilerplate for laraevl cache remember" bm
+$$1 = \Cache::remember("${2:cache_name}", ${3:length_seconds}, function () use ($$4) {
+
+    $0
+
+    // laravel will not cache null, so if no match cache false
+    $$1 = $$1 ?? false;
+
+    return $$1;
+
+});
 endsnippet
 
 snippet ctrl_meth "Laravel controller method" bm
@@ -142,4 +159,81 @@ endsnippet
 
 snippet gf_debug_log "Write to Gravity Forms debug log" bm
 GFCommon::log_debug(${1:message});
+endsnippet
+
+snippet gf_field_validation "GF custom field validation" bm
+add_filter("gform_field_validation_${1:form_id}_${2:field_id}", "${3:function_name}", 10, 4);
+$0
+endsnippet
+
+snippet lm_soft_del "laravel migration soft delete" bm
+$table->softDeletes();
+endsnippet
+
+snippet lm_drop_col "laravel migration drop column" bm
+$table->dropColumn('${1:col}');
+endsnippet
+
+snippet l_use_soft_del "laravel use soft deletes" bm
+use Illuminate\Database\Eloquent\SoftDeletes;
+endsnippet
+
+snippet lm_str "laravel migration for string column" bm
+$table->string('${1:col}');
+endsnippet
+
+snippet lm_str_null "laravel migration for nullable string column" bm
+$table->string('${1:col}')->nullable();
+endsnippet
+
+snippet scandir "php scandir strategy" bm
+$path = '${1:path}';
+$files = array_diff(scandir($path), ['.', '..']);
+endsnippet
+
+snippet array_search "php array_search" bm
+array_search(${1:needle}, ${2:haystack});
+endsnippet
+
+snippet wp_debug "wordpress debug config boilerplate" bm
+// Enable WP_DEBUG mode
+define( 'WP_DEBUG', true );
+
+// Enable Debug logging to the /wp-content/debug.log file
+define( 'WP_DEBUG_LOG', true );
+
+// Disable display of errors and warnings
+define( 'WP_DEBUG_DISPLAY', false );
+@ini_set( 'display_errors', 0 );
+endsnippet
+
+snippet server_ip "php server ip" bm
+$_SERVER['SERVER_ADDR'];
+endsnippet
+
+snippet exec "php exec" bm
+exec("${1:cmd}", $returnArr, $returnCode);
+endsnippet
+
+snippet parent_con "call parent constructor" bm
+parent::__construct();
+endsnippet
+
+snippet unparse_url_func "function to unparse url after using parse_url function" bm
+function unparse_url($parsed_url) {
+    $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : '';
+    $host     = isset($parsed_url['host']) ? $parsed_url['host'] : '';
+    $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : '';
+    $user     = isset($parsed_url['user']) ? $parsed_url['user'] : '';
+    $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : '';
+    $pass     = ($user || $pass) ? "$pass@" : '';
+    $path     = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+    $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : '';
+    $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
+    return "$scheme$user$pass$host$port$path$query$fragment";
+}
+endsnippet
+
+snippet print_r_debug "print_r debug output" bm
+echo '<pre>'; print_r($$1); echo '</pre>';
 endsnippet

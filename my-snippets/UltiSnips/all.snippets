@@ -1,4 +1,4 @@
-snippet mediaq "media queries" bm
+snippet css_media_q "media queries" bm
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
 
@@ -20,12 +20,27 @@ snippet bs3_input "bootstrap 3 input field" bm
     <label for="${1:for}">${2:label}</label>
     <input type="${3:text}" class="form-control" id="${4:id}" name="${5:name}" placeholder="${6:placeholder}" value="{{ old('${7:old_value}', ${8:property}) }}">
 </div>
-
 $0
 endsnippet
 
-snippet jq_ready "jquery ready boilerplate" bm
+snippet sui_field "semantic ui input field" bm
+<div class="$0field">
+    <label>${1:label}</label>
+    <input type="text" id="${2:id}" name="${3:name}" placeholder="${4:placeholder}">
+</div>
+endsnippet
 
+snippet sui_toggle "semantic ui toggle checkbox" bm
+<div class="ui toggle checkbox">
+    <input id="${1:id}" type="checkbox" name="${2:name}" value="1" @if (${3:checked}$0) checked @endif >
+</div>
+endsnippet
+
+snippet hidden_input "hidden input field" bm
+<input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
+endsnippet
+
+snippet jq_ready "jquery ready boilerplate" bm
 $(document)
 
     .ready(function() {
@@ -35,4 +50,91 @@ $(document)
     })
 
 ;
+endsnippet
+
+snippet jq_click "jquery click" bm
+.on('click', '${1:element}', function(e){
+    $0
+})
+endsnippet
+
+snippet bs_r "bootstrap row" bm
+<div class="row">
+    $0
+</div>
+endsnippet
+
+snippet bs_c "bootstrap col" bm
+<div class="col $1">
+    $0
+</div>
+endsnippet
+
+snippet sui_def_table "semantic ui definition table" bm
+<table class="ui definition table">
+  <thead>
+    <tr><th></th>
+    <th>Arguments</th>
+    <th>Description</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>reset rating</td>
+      <td>None</td>
+      <td>Resets rating to default value</td>
+    </tr>
+    <tr>
+      <td>set rating</td>
+      <td>rating (integer)</td>
+      <td>Sets the current star rating to specified value</td>
+    </tr>
+  </tbody>
+</table>
+endsnippet
+
+snippet js_obj_has_prop "check if js object has a given property" bm
+if($1.hasOwnProperty($2)){
+    $0
+}
+endsnippet
+
+snippet js_arr_has_key "check if js array has a given key" bm
+if("$1" in $2){
+    $0
+}
+endsnippet
+
+snippet js_write_cookie_func "js function to store a cookie" bm
+function writeCookie(name,value,days) {
+    var date, expires;
+    if (days) {
+        date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        expires = "; expires=" + date.toGMTString();
+            }else{
+        expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+endsnippet
+
+snippet js_read_cookie_func "js function to read a cookie" bm
+function readCookie(name) {
+    var i, c, ca, nameEQ = name + "=";
+    ca = document.cookie.split(';');
+    for(i=0;i < ca.length;i++) {
+        c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1,c.length);
+        }
+        if (c.indexOf(nameEQ) == 0) {
+            return c.substring(nameEQ.length,c.length);
+        }
+    }
+    return '';
+}
+endsnippet
+
+snippet jq_tog_class "toggle a css class with jquery" bm
+$( "$1" ).toggleClass( $2 );
 endsnippet

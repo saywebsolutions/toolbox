@@ -39,3 +39,5 @@ if [ ! -d "configs/.git" ]; then
 else
   echo 'VCS detected, aborting update.'
 fi
+
+~/repos/configs/./deploy_confs.sh
