@@ -34,6 +34,9 @@ apt-get -y autoremove
 apt install -y php
 apt install -y php-mbstring php-xml php-json php-zip
 
+sudo a2enmod rewrite
+systemctl restart apache2
+
 apt install -y redis-server
 sed --in-place 's/^supervised.*/supervised systemd/g' /etc/redis/redis.conf
 systemctl reload redis.service

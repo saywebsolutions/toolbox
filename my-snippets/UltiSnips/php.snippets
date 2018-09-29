@@ -17,7 +17,7 @@ $0
 endsnippet
 
 snippet l_route "laravel route" bm
-Route::get('/$1', '$2@$3')->name('$3');
+Route::${1:get}('/$2', '$3@$4')->name('$4');
 endsnippet
 
 snippet l_cache_meth "Boilerplate for method with caching and try/catch" bm
@@ -232,4 +232,8 @@ function unparse_url($parsed_url) {
     $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : '';
     return "$scheme$user$pass$host$port$path$query$fragment";
 }
+endsnippet
+
+snippet print_r_debug "print_r debug output" bm
+echo '<pre>'; print_r($$1); echo '</pre>';
 endsnippet
