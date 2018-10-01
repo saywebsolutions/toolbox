@@ -241,3 +241,16 @@ endsnippet
 snippet l_db_raw "raw query part" bm
 ->select(DB::raw('$1 as $2, $3'))
 endsnippet
+
+snippet l_scope "laravel scope" bm
+/**
+ * Scope a query to $4.
+ *
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scope$1($query)
+{
+    return $query->where('$2', '$3')$0;
+}
+endsnippet
