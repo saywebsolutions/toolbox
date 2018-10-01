@@ -237,3 +237,7 @@ endsnippet
 snippet print_r_debug "print_r debug output" bm
 echo '<pre>'; print_r($$1); echo '</pre>';
 endsnippet
+
+snippet l_db_raw "raw query part" bm
+->select(DB::raw('$1 as $2, $3'))
+endsnippet
