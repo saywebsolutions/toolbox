@@ -143,3 +143,20 @@ snippet lorem "bible lorem" bm
 Yahweh is my shepherd: I shall lack nothing. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He guides me in the paths of righteousness for his name's sake. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me. Your rod and your staff, they comfort me. You prepare a table before me in the presence of my enemies. You anoint my head with oil. My cup runs over. Surely goodness and loving kindness shall follow me all the days of my life, and I will dwell in Yahweh's house forever.
 endsnippet
 
+snippet jq_change_val "get value of selected option on change jquery" bm
+.on('change', '$1', function(e){
+   var val = $("$1 option:selected").val();
+});
+endsnippet
+
+snippet js_get_select_option "get value of selected option with javascript" bm
+var o = document.getElementById("$1");
+var val = e.options[o.selectedIndex].value;
+var txt = e.options[o.selectedIndex].text;
+endsnippet
+
+snippet po ".po file language translation" bm
+msgid "$1"
+msgstr "$2"
+endsnippet
+
