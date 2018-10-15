@@ -36,6 +36,15 @@ snippet sui_toggle "semantic ui toggle checkbox" bm
 </div>
 endsnippet
 
+snippet sui_grid "semantic ui grid" bm
+<div class="ui grid">
+    <div class="eight wide column">
+    </div>
+    <div class="eight wide column">
+    </div>
+</div>
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
 endsnippet
@@ -160,3 +169,17 @@ msgid "$1"
 msgstr "$2"
 endsnippet
 
+snippet chunk "chunk results collection in blade" bm
+@foreach($$1->chunk(5) as $chunk)
+    <ul>
+        @foreach($chunk as $$2)
+            @php dump($2) @endphp
+            Item {{ $loop->iteration }}
+        @endforeach
+    </ul>
+@endforeach
+endsnippet
+
+snippet trans "laravel translation boilerplate" bm
+translate('$1')
+endsnippet
