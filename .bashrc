@@ -44,6 +44,7 @@ fi
 
 alias sk="ssh-keygen -t rsa -b 4096 -o -a 100"
 alias l_boiler="wget https://github.com/rappasoft/laravel-5-boilerplate/archive/master.zip"
+alias vif='vim $(fzf)'
 
 PAGER=less
 VISUAL=vim
