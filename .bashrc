@@ -74,3 +74,5 @@ PATH=$PATH:$GOPATH/bin # Add GOPATH/bin to PATH for scripting
 #export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+stty -ixon
