@@ -38,6 +38,8 @@ set smartindent
 set directory=~/.vim/swapfiles//
 set backupdir=~/.vim/swapfiles//
 
+au BufNewFile,BufRead *.liquid setlocal ft=html
+
 :let g:mapleader = "\<Space>" " remap <leader> key to space
 
 "set cursorline         " underline current line
