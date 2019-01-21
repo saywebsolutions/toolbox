@@ -207,6 +207,53 @@ var val = e.options[o.selectedIndex].value;
 var txt = e.options[o.selectedIndex].text;
 endsnippet
 
+snippet js_get "ajax get with js" bm
+var request = new XMLHttpRequest();
+
+request.open('GET', url);
+request.onload = function () {
+    console.log(this.response);
+    console.log(this.status);
+    // success
+    if (this.status >= 200 && this.status < 400) {
+        $1
+        $0
+    // fail
+    } else {
+        $2
+    }
+};
+// connection error
+request.onerror = function() {
+    $3
+};
+request.send();
+endsnippet
+
+snippet js_post "ajax post with js" bm
+var request = new XMLHttpRequest();
+
+request.open('POST', url);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;');
+request.onload = function () {
+    console.log(this.response);
+    console.log(this.status);
+    // success
+    if (this.status >= 200 && this.status < 400) {
+        $1
+        $0
+    // fail
+    } else {
+        $2
+    }
+};
+// connection error
+request.onerror = function() {
+    $3
+};
+request.send('$4=' + document.getElementById('$4').value + '&$5=' + document.getElementById('$5').value);
+endsnippet
+
 snippet po ".po file language translation" bm
 msgid "$1"
 msgstr "$2"
