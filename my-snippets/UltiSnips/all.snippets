@@ -110,6 +110,16 @@ snippet jq_click "jquery click" bm
 })
 endsnippet
 
+snippet jq_get_json "jquery get json shorthand" bm
+$.getJSON( "$1", {foo: "bar" })
+    .done(function(response){
+        console.log("JSON response: "+response);
+    })
+    .fail(function(jqxhr, textStatus, error) {
+        console.log("Request failed: "+textStatus+", "+error);
+    });
+endsnippet
+
 snippet bs_r "bootstrap row" bm
 <div class="row">
     $0
