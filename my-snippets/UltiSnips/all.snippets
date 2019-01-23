@@ -283,3 +283,23 @@ endsnippet
 snippet trans "laravel translation boilerplate" bm
 {{ translate('$1') }}
 endsnippet
+
+snippet ax_get "axios async/await get boilerplate" bm
+const getData = async () => {
+  try {
+    return await axios.get('$1')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const useData = async () => {
+  const response = await getData()
+  console.log(`Response: ${response}`)
+  $0
+}
+
+useData()
+endsnippet
+
+
