@@ -72,6 +72,10 @@ public function ${1:name}(${2:$param}){
 }    
 endsnippet
 
+snippet l_response_json "curl get request boilerplate" bm
+return response()->json([ $0 ]);
+endsnippet
+
 snippet curl_get "curl get request boilerplate" bm
 
 $endpoint = "${1:endpoint}";
