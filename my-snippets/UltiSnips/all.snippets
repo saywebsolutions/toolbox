@@ -151,6 +151,14 @@ $.getJSON( "$1", {foo: "bar" })
     });
 endsnippet
 
+snippet jq_each "jquery each"
+$('$1').each(function(i, obj) {
+    //jquery obj:
+    console.log($(this))
+    $0
+});
+endsnippet
+
 snippet bs_r "bootstrap row" bm
 <div class="row">
     $0
