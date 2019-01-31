@@ -171,6 +171,24 @@ snippet bs_c "bootstrap col" bm
 </div>
 endsnippet
 
+snippet bs4_input "bootstrap 4 input"
+<div class="${1:col-md-6} mb-3">
+    <label for="$2">$3</label>
+    <input type="text" class="form-control" id="$2" name="$2" value="" required ${4:maxlength="45"}>
+    <small id="$2Help" class="form-text text-muted">$5</small>
+</div>
+endsnippet 
+
+snippet bs4_select "bootstrap 4 select"
+<div class="${1:col-md-6} mb-3">
+    <label for="$2">$3</label>
+    <select class="custom-select" id="$2" name="$2" required>
+        <option val="$4">$5</option>
+    </select>
+    <small id="$2Help" class="form-text text-muted">$5</small>
+</div>
+endsnippet 
+
 snippet sui_def_table "semantic ui definition table" bm
 <table class="ui definition table">
   <thead>
@@ -341,4 +359,10 @@ const useData = async () => {
 useData()
 endsnippet
 
+snippet js_host "get hostname in js"
+window.location.hostname
+endsnippet
 
+snippet js_local_err "console log error if on localhost"
+if(window.location.hostname == 'localhost'){ console.error(e); }
+endsnippet
