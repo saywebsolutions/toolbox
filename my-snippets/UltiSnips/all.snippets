@@ -23,6 +23,49 @@ snippet bs3_input "bootstrap 3 input field" bm
 $0
 endsnippet
 
+snippet bs4_alert "bootstrap 4 alert" bm
+<div class="alert alert-$1" role="alert">
+    <h5 class="alert-heading">$2</h5><hr>
+    <p class="mb-0">$3</p>
+</div>
+endsnippet
+
+snippet bs4_card "bootstrap 4 card" bm
+<div class="card">
+    <div class="card-body">
+        $0
+    </div>
+</div>
+endsnippet
+
+snippet bs4_pills_nav "bootstrap 4 nav" bm
+<nav class="nav nav-pills flex-column flex-sm-row">
+    <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+    <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+    <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+    <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+</nav>
+endsnippet
+
+snippet bs4_tabs "bootstrap 4 tabs" bm
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#$1" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#$2" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#$3" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="$1" role="tabpanel" aria-labelledby="home-tab">$4</div>
+  <div class="tab-pane fade" id="$2" role="tabpanel" aria-labelledby="profile-tab">$5</div>
+  <div class="tab-pane fade" id="$3" role="tabpanel" aria-labelledby="contact-tab">$6</div>
+</div>
+endsnippet
+
 snippet sui_field "semantic ui input field" bm
 <div class="$0field">
     <label>${1:label}</label>
@@ -33,6 +76,15 @@ endsnippet
 snippet sui_toggle "semantic ui toggle checkbox" bm
 <div class="ui toggle checkbox">
     <input id="${1:id}" type="checkbox" name="${2:name}" value="1" @if (${3:checked}$0) checked @endif >
+</div>
+endsnippet
+
+snippet sui_grid "semantic ui grid" bm
+<div class="ui grid">
+    <div class="eight wide column">
+    </div>
+    <div class="eight wide column">
+    </div>
 </div>
 endsnippet
 
@@ -58,6 +110,55 @@ snippet jq_click "jquery click" bm
 })
 endsnippet
 
+snippet jq_ajax "jquery ajax" bm
+$.ajax({
+
+    url: "$1",
+
+    data: {
+        id: 1
+    },
+
+    // Whether this is a POST or GET request
+    type: "GET",
+
+    // The type of data we expect back
+    dataType : "${2:json}",
+})
+  .done(function( response ) {
+      console.log( response );
+      $0
+  })
+  // Code to run if the request fails; the raw request and
+  // status codes are passed to the function
+  .fail(function( xhr, status, errorThrown ) {
+    console.log( "Error: " + errorThrown );
+    console.log( "Status: " + status );
+    console.dir( xhr );
+  })
+  .always(function( xhr, status ) {
+    console.log( "The request is complete!" );
+  });
+endsnippet
+
+snippet jq_get_json "jquery get json shorthand" bm
+$.getJSON( "$1", {foo: "bar" })
+    .done(function(response){
+        console.log("JSON response: "+response);
+    })
+    .fail(function(jqxhr, textStatus, error) {
+        console.log("Request failed: "+textStatus+", "+error);
+    });
+endsnippet
+
+snippet jq_each "jquery each"
+$('$1').each(function(i, obj) {
+    //jquery obj:
+    console.log($(this))
+    $0
+});
+endsnippet
+
 snippet bs_r "bootstrap row" bm
 <div class="row">
     $0
@@ -69,6 +170,24 @@ snippet bs_c "bootstrap col" bm
     $0
 </div>
 endsnippet
+
+snippet bs4_input "bootstrap 4 input"
+<div class="${1:col-md-6} mb-3">
+    <label for="$2">$3</label>
+    <input type="text" class="form-control" id="$2" name="$2" value="" required ${4:maxlength="45"}>
+    <small id="$2Help" class="form-text text-muted">$5</small>
+</div>
+endsnippet 
+
+snippet bs4_select "bootstrap 4 select"
+<div class="${1:col-md-6} mb-3">
+    <label for="$2">$3</label>
+    <select class="custom-select" id="$2" name="$2" required>
+        <option val="$4">$5</option>
+    </select>
+    <small id="$2Help" class="form-text text-muted">$5</small>
+</div>
+endsnippet 
 
 snippet sui_def_table "semantic ui definition table" bm
 <table class="ui definition table">
@@ -137,4 +256,113 @@ endsnippet
 
 snippet jq_tog_class "toggle a css class with jquery" bm
 $( "$1" ).toggleClass( $2 );
+endsnippet
+
+snippet lorem "bible lorem" bm
+Yahweh is my shepherd: I shall lack nothing. He makes me lie down in green pastures. He leads me beside still waters. He restores my soul. He guides me in the paths of righteousness for his name's sake. Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me. Your rod and your staff, they comfort me. You prepare a table before me in the presence of my enemies. You anoint my head with oil. My cup runs over. Surely goodness and loving kindness shall follow me all the days of my life, and I will dwell in Yahweh's house forever.
+endsnippet
+
+snippet jq_change_val "get value of selected option on change jquery" bm
+.on('change', '$1', function(e){
+   var val = $("$1 option:selected").val();
+});
+endsnippet
+
+snippet js_get_select_option "get value of selected option with javascript" bm
+var o = document.getElementById("$1");
+var val = e.options[o.selectedIndex].value;
+var txt = e.options[o.selectedIndex].text;
+endsnippet
+
+snippet js_get "ajax get with js" bm
+var request = new XMLHttpRequest();
+
+request.open('GET', url);
+request.onload = function () {
+    console.log(this.response);
+    console.log(this.status);
+    // success
+    if (this.status >= 200 && this.status < 400) {
+        $1
+        $0
+    // fail
+    } else {
+        $2
+    }
+};
+// connection error
+request.onerror = function() {
+    $3
+};
+request.send();
+endsnippet
+
+snippet js_post "ajax post with js" bm
+var request = new XMLHttpRequest();
+
+request.open('POST', url);
+request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;');
+request.onload = function () {
+    console.log(this.response);
+    console.log(this.status);
+    // success
+    if (this.status >= 200 && this.status < 400) {
+        $1
+        $0
+    // fail
+    } else {
+        $2
+    }
+};
+// connection error
+request.onerror = function() {
+    $3
+};
+request.send('$4=' + document.getElementById('$4').value + '&$5=' + document.getElementById('$5').value);
+endsnippet
+
+snippet po ".po file language translation" bm
+msgid "$1"
+msgstr "$2"
+endsnippet
+
+snippet chunk "chunk results collection in blade" bm
+@foreach($$1->chunk(5) as $chunk)
+    <ul>
+        @foreach($chunk as $$2)
+            @php dump($2) @endphp
+            Item {{ $loop->iteration }}
+        @endforeach
+    </ul>
+@endforeach
+endsnippet
+
+snippet trans "laravel translation boilerplate" bm
+{{ translate('$1') }}
+endsnippet
+
+snippet ax_get "axios async/await get boilerplate" bm
+const getData = async () => {
+  try {
+    return await axios.get('$1')
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const useData = async () => {
+  const response = await getData()
+  console.log(`Response: ${response}`)
+  $0
+}
+
+useData()
+endsnippet
+
+snippet js_host "get hostname in js"
+window.location.hostname
+endsnippet
+
+snippet js_local_err "console log error if on localhost"
+if(window.location.hostname == 'localhost'){ console.error(e); }
 endsnippet

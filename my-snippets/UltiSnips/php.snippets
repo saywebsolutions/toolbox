@@ -59,7 +59,7 @@ $$1 = \Cache::remember("${2:cache_name}", ${3:length_seconds}, function () use (
 });
 endsnippet
 
-snippet ctrl_meth "Laravel controller method" bm
+snippet l_ctrl_meth "Laravel controller method" bm
 public function ${1:name}(${2:$param}){
 
     $0
@@ -70,6 +70,10 @@ public function ${1:name}(${2:$param}){
     ;    
 
 }    
+endsnippet
+
+snippet l_response_json "curl get request boilerplate" bm
+return response()->json([ $0 ]);
 endsnippet
 
 snippet curl_get "curl get request boilerplate" bm
@@ -236,4 +240,33 @@ endsnippet
 
 snippet print_r_debug "print_r debug output" bm
 echo '<pre>'; print_r($$1); echo '</pre>';
+endsnippet
+
+snippet l_db_raw "raw query part" bm
+->select(DB::raw('$1 as $2, $3'))
+endsnippet
+
+snippet l_scope "laravel scope" bm
+/**
+ * Scope a query to $4.
+ *
+ * @param \Illuminate\Database\Eloquent\Builder $query
+ * @return \Illuminate\Database\Eloquent\Builder
+ */
+public function scope$1($query)
+{
+    return $query->where('$2', '$3')$0;
+}
+endsnippet
+
+snippet dedupe_ass "dedupe an associative array based on value" bm
+$taken = [];
+
+foreach($items as $k => $item) {
+    if( ! in_array($item[$1], $taken)) {
+        $taken[] = $item[$1];
+    } else {
+        unset($items[$k]);
+    }
+}
 endsnippet
