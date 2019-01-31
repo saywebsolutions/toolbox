@@ -270,3 +270,31 @@ foreach($items as $k => $item) {
     }
 }
 endsnippet
+
+snippet can_meth "boilerplate can meth"
+/**
+ * $1
+ *
+ * @return stuff
+ */
+public function $2()
+{
+
+    $payload = $this->buildPayload('$3');
+
+    $body = $this->sendRequest($payload);
+
+    $success = $this->determineSuccess($body);
+
+    if($success){
+
+        $data = $body[0]['tables']['table0'] ?? null;
+
+        return $data;
+
+    }
+
+    return null;
+
+}
+endsnippet
