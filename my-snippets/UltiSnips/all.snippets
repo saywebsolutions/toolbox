@@ -375,3 +375,26 @@ endsnippet
 snippet js_local_err "console log error if on localhost"
 if(window.location.hostname == 'localhost'){ console.error(e); }
 endsnippet
+
+snippet a_vhost "apache vhost"
+<VirtualHost *:80>
+
+    ServerName $1
+    ServerAlias $2
+    ServerAdmin $3
+    DocumentRoot /var/www/$4/public
+
+    <Directory /var/www/$4/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+endsnippet
+
+snippet a_redirect "apache redirect"
+    Redirect permanent / $1
+endsnippet
