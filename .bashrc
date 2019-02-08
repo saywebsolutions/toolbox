@@ -39,6 +39,7 @@ else
     alias grep="grep --color"
     alias vi="vim"
     alias ll="du -sh * | sort -rh | head -n 25"
+    alias lynx="lynx -vikeys"
 
 fi
 
