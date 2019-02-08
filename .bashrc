@@ -23,9 +23,15 @@ HISTFILESIZE=10000000
 # Mac OSX
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
+    function sha256sum() { shasum -a 256 "$@" ; } && export -f sha256sum
+
     export CLICOLOR=1
     export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+
     alias ll='ls -lah'
+    # mac replacement for md5sum command
+    alias md5='md5 -r'
+    alias md5sum='md5 -r'
 
 else
 

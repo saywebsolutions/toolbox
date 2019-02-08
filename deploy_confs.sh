@@ -2,7 +2,7 @@
 
 cd ~/
 
-for x in '.vimrc' '.screenrc' '.toprc' '.bashrc' '.gitconfig' '.tmux.conf' '.sqliterc';
+for x in '.vimrc' '.screenrc' '.toprc' '.bashrc' '.bash_profile' '.gitconfig' '.tmux.conf' '.sqliterc';
 do
     echo "Deploying $x..."
     ln -sf "repos/configs/$x"
