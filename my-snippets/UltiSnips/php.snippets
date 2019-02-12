@@ -76,6 +76,19 @@ snippet l_response_json "curl get request boilerplate" bm
 return response()->json([ $0 ]);
 endsnippet
 
+snippet l_man_val "laravel manual validation"
+$validator = Validator::make($request->all(), [
+    'title' => 'required|unique:posts|max:255',
+    'body' => 'required',
+]);
+
+if ($validator->fails()) {
+    return redirect('post/create')
+        ->withErrors($validator)
+        ->withInput();
+}
+endsnippet
+
 snippet curl_get "curl get request boilerplate" bm
 
 $endpoint = "${1:endpoint}";

@@ -398,3 +398,15 @@ endsnippet
 snippet a_redirect "apache redirect"
     Redirect permanent / $1
 endsnippet
+
+snippet ncf "netlify cms field declaration: https://www.netlifycms.org/docs/widgets/"
+- {label: "$1", name: "$2", widget: "$3"}
+endsnippet
+
+snippet ncf_datetime "netlify cms datetime field declaration: https://www.netlifycms.org/docs/widgets/#datetime"
+- {label: "$1", name: "$2", widget: "datetime", format: "YYYY-MM-DD HH:mm"}
+endsnippet
+
+snippet ncf_bool "netlify cms boolean field declaration: https://www.netlifycms.org/docs/widgets/#boolean"
+- {label: "$1", name: "$2", widget: "boolean", default: false}
+endsnippet
