@@ -88,6 +88,18 @@ snippet sui_grid "semantic ui grid" bm
 </div>
 endsnippet
 
+snippet sui_modal "semantic ui modal"
+<div id="$1" class="ui long large modal scrolling">
+  <i class="close icon"></i>
+  <div class="content">
+    <div class="description">
+      <div id="$1Content"></div>
+      <br style='clear:both;' /><br/>
+    </div>
+  </div>
+</div>
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
 endsnippet
@@ -409,4 +421,10 @@ endsnippet
 
 snippet ncf_bool "netlify cms boolean field declaration: https://www.netlifycms.org/docs/widgets/#boolean"
 - {label: "$1", name: "$2", widget: "boolean", default: false}
+endsnippet
+
+snippet __ "text divider"
+_______________________________________________________________________________    
+
+$0
 endsnippet
