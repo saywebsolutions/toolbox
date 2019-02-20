@@ -308,3 +308,11 @@ public function $2()
 
 }
 endsnippet
+
+snippet ls_put "laravel session store an item"
+session(['$1' => '$2']);
+endsnippet
+
+snippet ls_pull "laravel pull item from session"
+session()->pull('$1', '$2');
+endsnippet
