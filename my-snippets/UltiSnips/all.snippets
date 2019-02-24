@@ -172,8 +172,10 @@ endsnippet
 
 snippet jq_each "jquery each"
 $('$1').each(function(i, obj) {
-    //jquery obj:
-    console.log($(this))
+    //jquery obj
+    console.log(i);
+    console.log(obj);
+    console.log($(this));
     $0
 });
 endsnippet
