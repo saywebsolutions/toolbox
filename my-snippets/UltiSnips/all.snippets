@@ -401,6 +401,14 @@ snippet js_local_err "console log error if on localhost"
 if(window.location.hostname == 'localhost'){ console.error(e); }
 endsnippet
 
+snippet js_for "js for loop"
+var ${1:i};
+var ${2:len} = ${3:arr}.length;
+for ($1 = 0, $1 < $2; $1++) {
+  console.log($3[$1]);
+}
+endsnippet
+
 snippet a_vhost "apache vhost"
 <VirtualHost *:80>
 
