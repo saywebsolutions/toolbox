@@ -184,6 +184,29 @@ snippet jq_disable "disable an element (via property) in jquery"
 $("$1").prop("disabled", true);
 endsnippet
 
+snippet jq_append  "jquery append boilerplate"
+$("${1:<div>}")
+    .addClass('$2')
+    .append(
+        $("${3:<h2>}")
+            .addClass($4)
+            .html($5)
+    )
+    .append(
+        $("${6:<p>}")
+            .addClass($7)
+            .html($8)
+    )
+    .append(
+        $("<a>")
+            .attr("target", "_blank")
+            .attr("href", $9)
+            .addClass($10)
+            .html("$11")
+    )
+    .appendTo("$12");
+endsnippet
+
 snippet bs_r "bootstrap row" bm
 <div class="row">
     $0
@@ -465,4 +488,3 @@ function getQueryParam(param) {
     return(false);
 }
 endsnippet
-    
