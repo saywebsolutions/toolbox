@@ -254,6 +254,15 @@ snippet bs4_check "bootstrap 4 checkbox"
 </div>
 endsnippet
 
+snippet bs4_select_mul "bs4 multiple select"
+<div class="form-group">
+    <label for="$1">Example multiple select</label>
+    <select multiple class="form-control" id="$1" name="$1">
+        <option value="$2">$3</option>
+    </select>
+</div>
+endsnippet
+
 snippet sui_def_table "semantic ui definition table" bm
 <table class="ui definition table">
   <thead>
@@ -547,3 +556,8 @@ function getQueryParam(param) {
     return(false);
 }
 endsnippet
+
+snippet json_count "get count of elements for a given bit of json"
+var count = Object.keys($1).length;
+endsnippet
+
