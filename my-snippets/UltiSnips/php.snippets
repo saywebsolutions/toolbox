@@ -76,6 +76,16 @@ snippet l_response_json "curl get request boilerplate" bm
 return response()->json([ $0 ]);
 endsnippet
 
+snippet l_man_val "laravel manual validation"
+$validator = \Validator::make($request->all(), [
+    '$1' => 'required|unique:posts|max:255',
+]);
+
+if ($validator->fails()) {
+    return redirect()->back()->withErrors($validator)->withInput();
+}
+endsnippet
+
 snippet curl_get "curl get request boilerplate" bm
 
 $endpoint = "${1:endpoint}";
@@ -269,4 +279,40 @@ foreach($items as $k => $item) {
         unset($items[$k]);
     }
 }
+endsnippet
+
+snippet can_meth "boilerplate can meth"
+/**
+ * $1
+ *
+ * @return stuff
+ */
+public function $2()
+{
+
+    $payload = $this->buildPayload('$3');
+
+    $body = $this->sendRequest($payload);
+
+    $success = $this->determineSuccess($body);
+
+    if($success){
+
+        $data = $body[0]['tables']['table0'] ?? null;
+
+        return $data;
+
+    }
+
+    return null;
+
+}
+endsnippet
+
+snippet ls_put "laravel session store an item"
+session(['$1' => '$2']);
+endsnippet
+
+snippet ls_pull "laravel pull item from session"
+session()->pull('$1', '$2');
 endsnippet

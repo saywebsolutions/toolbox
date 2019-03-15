@@ -88,8 +88,31 @@ snippet sui_grid "semantic ui grid" bm
 </div>
 endsnippet
 
+snippet sui_modal "semantic ui modal"
+<div id="$1" class="ui long large modal scrolling">
+  <i class="close icon"></i>
+  <div class="content">
+    <div class="description">
+      <div id="$1Content"></div>
+      <br style='clear:both;' /><br/>
+    </div>
+  </div>
+</div>
+endsnippet
+
+snippet sui_msg "semantic ui message"
+<div class="ui $0 message">
+  <div class="header">$1</div>
+  <p>$2</p>
+</div>
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
+endsnippet
+
+snippet jq_replace_word "jquery replace a word in text"
+$("$1").html($("$1").html().replace("$2", "$3"));
 endsnippet
 
 snippet jq_ready "jquery ready boilerplate" bm
@@ -153,10 +176,43 @@ endsnippet
 
 snippet jq_each "jquery each"
 $('$1').each(function(i, obj) {
-    //jquery obj:
-    console.log($(this))
+    //jquery obj
+    console.log(i);
+    console.log(obj);
+    console.log($(this));
     $0
 });
+endsnippet
+
+snippet jq_disable "disable an element (via property) in jquery"
+$("$1").prop("disabled", true);
+endsnippet
+
+snippet jq_append  "jquery append boilerplate"
+$("${1:<div>}")
+    .addClass('$2')
+    .append(
+        $("${3:<h2>}")
+            .addClass($4)
+            .html($5)
+    )
+    .append(
+        $("${6:<p>}")
+            .addClass($7)
+            .html($8)
+    )
+    .append(
+        $("<a>")
+            .attr("target", "_blank")
+            .attr("href", $9)
+            .addClass($10)
+            .html("$11")
+    )
+    .appendTo("$12");
+endsnippet
+
+snippet jq_data "get a js data param with jquery"
+var $1 = $(this).data('$1');
 endsnippet
 
 snippet bs_r "bootstrap row" bm
@@ -188,6 +244,24 @@ snippet bs4_select "bootstrap 4 select"
     <small id="$2Help" class="form-text text-muted">$5</small>
 </div>
 endsnippet 
+
+snippet bs4_check "bootstrap 4 checkbox"
+<div class="${1:col-md-6} mb-3">
+    <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="$2" name="$2">
+        <label class="custom-control-label" for="$2">$3</label>
+    </div>
+</div>
+endsnippet
+
+snippet bs4_select_mul "bs4 multiple select"
+<div class="form-group">
+    <label for="$1">Example multiple select</label>
+    <select multiple class="form-control" id="$1" name="$1">
+        <option value="$2">$3</option>
+    </select>
+</div>
+endsnippet
 
 snippet sui_def_table "semantic ui definition table" bm
 <table class="ui definition table">
@@ -321,6 +395,57 @@ request.onerror = function() {
 request.send('$4=' + document.getElementById('$4').value + '&$5=' + document.getElementById('$5').value);
 endsnippet
 
+snippet js_table_from_json "create a html table from json boilerplate"
+const wrapper = document.getElementById('${1:content}');
+
+const testData = [
+  {"id":1, "name":"Jose", "age":18, "weight":224, "weightUnit":'lb'},
+  {"id":2, "name":"Valentina", "age":19, "weight":5, "weightUnit":'stone'},
+  {"id":3, "name":"Magomed", "age":24, "weight":82, "weightUnit":'kg'}
+];
+
+function fetchData() {
+  fetch("$2")
+      .then(data => data.json())
+      .then(jsonData => populate(jsonData))
+      .catch(e => {
+          wrapper.innerText = "Error: "+e+" going to use test data";
+          populate(testData);
+      });
+};
+
+//fetch the data once the page has loaded
+document.addEventListener('DOMContentLoaded', fetchData, false);
+
+function dom(tag, text) {
+    let r = document.createElement(tag);
+    if (text) r.innerText = text;
+    return r;
+};
+
+function append(parent, child) {
+  parent.appendChild(child);
+  return parent;
+};
+
+function populate(json) {
+    if (json.length === 0) return;
+    let keys = Object.keys(json[0]);
+    let table = dom('table');
+    //header
+    append(table,
+      keys.map(k => dom('th', k)).reduce(append, dom('tr'))
+    );
+    //values
+    const makeRow = (acc, row) =>
+        append(acc,
+            keys.map(k => dom('td', row[k])).reduce(append, dom('tr'))
+        );
+    json.reduce(makeRow, table);
+    wrapper.appendChild(table);
+};
+endsnippet
+
 snippet po ".po file language translation" bm
 msgid "$1"
 msgstr "$2"
@@ -366,3 +491,73 @@ endsnippet
 snippet js_local_err "console log error if on localhost"
 if(window.location.hostname == 'localhost'){ console.error(e); }
 endsnippet
+
+snippet js_for "js for loop"
+var ${1:i};
+var ${2:len} = ${3:arr}.length;
+for ($1 = 0, $1 < $2; $1++) {
+  console.log($3[$1]);
+}
+endsnippet
+
+snippet js_arr "initialize js array"
+var $1 = new Array();
+endsnippet
+
+snippet a_vhost "apache vhost"
+<VirtualHost *:80>
+
+    ServerName $1
+    ServerAlias $2
+    ServerAdmin $3
+    DocumentRoot /var/www/$4/public
+
+    <Directory /var/www/$4/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+endsnippet
+
+snippet a_redirect "apache redirect"
+    Redirect permanent / $1
+endsnippet
+
+snippet ncf "netlify cms field declaration: https://www.netlifycms.org/docs/widgets/"
+- {label: "$1", name: "$2", widget: "$3"}
+endsnippet
+
+snippet ncf_datetime "netlify cms datetime field declaration: https://www.netlifycms.org/docs/widgets/#datetime"
+- {label: "$1", name: "$2", widget: "datetime", format: "YYYY-MM-DD HH:mm"}
+endsnippet
+
+snippet ncf_bool "netlify cms boolean field declaration: https://www.netlifycms.org/docs/widgets/#boolean"
+- {label: "$1", name: "$2", widget: "boolean", default: false}
+endsnippet
+
+snippet __ "text divider"
+_______________________________________________________________________________    
+
+$0
+endsnippet
+
+snippet js_get_query_param "description"
+function getQueryParam(param) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if(pair[0] == param){return pair[1];}
+    }
+    return(false);
+}
+endsnippet
+
+snippet json_count "get count of elements for a given bit of json"
+var count = Object.keys($1).length;
+endsnippet
+
