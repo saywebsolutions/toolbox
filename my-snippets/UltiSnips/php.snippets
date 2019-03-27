@@ -86,6 +86,20 @@ if ($validator->fails()) {
 }
 endsnippet
 
+snippet l_mut "laravel mutator"
+    /**
+     * Set the $3.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function set$1Attribute($value)
+    {
+        $this->attributes['$2'] = strtolower($value);
+        $0
+    }
+endsnippet
+
 snippet curl_get "curl get request boilerplate" bm
 
 $endpoint = "${1:endpoint}";
