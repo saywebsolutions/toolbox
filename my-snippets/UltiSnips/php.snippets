@@ -86,6 +86,20 @@ if ($validator->fails()) {
 }
 endsnippet
 
+snippet l_mut "laravel mutator"
+    /**
+     * Set the $3.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function set$1Attribute($value)
+    {
+        $this->attributes['$2'] = strtolower($value);
+        $0
+    }
+endsnippet
+
 snippet curl_get "curl get request boilerplate" bm
 
 $endpoint = "${1:endpoint}";
@@ -144,13 +158,23 @@ echo "\n[".date('Y-m-d H:i:s')."] - ${1:message}";
 $0
 endsnippet
 
-snippet fillable "Fillable eloquent property" bm
+snippet l_fillable "Fillable eloquent property" bm
 /**
  * The attributes that are mass assignable.
  *
  * @var array
  */
 protected $fillable = [${1:fields}];
+$0
+endsnippet
+
+snippet l_guarded "Guarded eloquent property" bm
+/**
+ * The attributes that aren't mass assignable.
+ *
+ * @var array
+ */
+protected $guarded = [${1:fields}];
 $0
 endsnippet
 
@@ -315,4 +339,35 @@ endsnippet
 
 snippet ls_pull "laravel pull item from session"
 session()->pull('$1', '$2');
+endsnippet
+
+snippet cli_boiler "cli boilerplate php command using splitbrain cli boilerplate"
+#!/usr/bin/php
+<?php
+require __DIR__.'/../vendor/autoload.php';
+use splitbrain\phpcli\CLI;
+use splitbrain\phpcli\Options;
+
+class $1 extends CLI
+{
+    // register options and arguments
+    protected function setup(Options $options)
+    {
+        $options->setHelp('$2');
+        $options->registerOption('version', 'print version', 'v');
+    }
+
+    // implement your code
+    protected function main(Options $options)
+    {
+        if ($options->getOpt('version')) {
+            $this->info('1.0.0');
+        } else {
+            echo $options->help();
+        }
+    }
+}
+// execute it
+$cli = new $1();
+$cli->run();
 endsnippet
