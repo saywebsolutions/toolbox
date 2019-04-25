@@ -371,3 +371,50 @@ class $1 extends CLI
 $cli = new $1();
 $cli->run();
 endsnippet
+
+snippet l_cmd "laravel artisan command boilerplate"
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+class $1 extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = '$1';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = '$2';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $3
+    }
+}
+//TODO - move this to app/Console/Kernel.php to register command
+//Commands\$1::class,
+endsnippet
