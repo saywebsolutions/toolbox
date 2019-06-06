@@ -220,6 +220,14 @@ snippet lm_date "laravel migration for date column" bm
 $table->date('${1:col}');
 endsnippet
 
+snippet lm_col "laravel migration column" bm
+$table->$1('${2:col}')->default($3);
+endsnippet
+
+snippet lm_col_null "laravel migration nullable column" bm
+$table->$1('${2:col}')->nullable()->default($3);
+endsnippet
+
 snippet lm_str "laravel migration for string column" bm
 $table->string('${1:col}');
 endsnippet
