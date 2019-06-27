@@ -2,6 +2,16 @@ snippet inc "@include directive"
 @include('$1')
 endsnippet
 
-snippet incIf "@includeIf directive"
+snippet inc_if "@includeIf directive"
 @includeIf('$1')
+endsnippet
+
+snippet sui_header "semantic ui header partial include"
+@include('layouts.partials.semanticHeader', [
+    'icon' => '$1',
+    'iconStyle' => null,
+    'heading' => ${2:$pageTitle},
+    'subheading' => ${3:$pageDescription},
+    'noHr' => null,
+])
 endsnippet
