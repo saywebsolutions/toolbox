@@ -72,6 +72,15 @@ public function ${1:name}(${2:$param}){
 }    
 endsnippet
 
+snippet l_ret_view "return a view in laravel" bm
+    return view('$1')
+        ->with('$2', $$2)
+        ->with('pageTitle', '${3:pageTitle}')
+        ->with('pageDescription', '${4:pageDescription}')
+    ;
+endsnippet
+
+
 snippet l_response_json "curl get request boilerplate" bm
 return response()->json([ $0 ]);
 endsnippet
