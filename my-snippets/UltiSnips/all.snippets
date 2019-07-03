@@ -291,6 +291,21 @@ snippet sui_def_table "semantic ui definition table" bm
 </table>
 endsnippet
 
+snippet sui_table "semantic ui table" bm
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>$1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="$1"></td>
+    </tr>
+  </tbody>
+</table>
+endsnippet
+
 snippet js_obj_has_prop "check if js object has a given property" bm
 if($1.hasOwnProperty($2)){
     $0
