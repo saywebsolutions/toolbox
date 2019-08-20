@@ -578,6 +578,10 @@ function getQueryParam(param) {
 }
 endsnippet
 
+snippet js_hash "get the hash of the current url in a js var"
+var hash = location.hash.replace('#', '');
+endsnippet
+
 snippet json_count "get count of elements for a given bit of json"
 var count = Object.keys($1).length;
 endsnippet
