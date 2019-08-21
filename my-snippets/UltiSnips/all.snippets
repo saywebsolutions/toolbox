@@ -177,7 +177,19 @@ $.getJSON( "$1", {foo: "bar" })
     })
     .fail(function(jqxhr, textStatus, error) {
         console.log("Request failed: "+textStatus+", "+error);
-    });
+    })
+;
+endsnippet
+
+snippet jq_post "jquery post shorthand"
+var posting = $.post( "$1", ${2:{ var: value }} );
+posting.done(function( data ) {
+    $0
+});
+posting.fail(function( data ) {
+});
+posting.always(function( data ) {
+});
 endsnippet
 
 snippet jq_each "jquery each"
