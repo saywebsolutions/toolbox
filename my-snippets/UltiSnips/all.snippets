@@ -601,11 +601,20 @@ endsnippet
 snippet lb "let's blog post"
 ---
 title: $1
-slug: $2
 keywords: $3
 meta: $4
 published_at: `!v strftime("%Y-%m-%d")`
 tags: $6
+---
+$0
+endsnippet
+
+snippet lbp "let's blog page"
+---
+title: $1
+keywords: $3
+meta: $4
+published_at: `!v strftime("%Y-%m-%d")`
 ---
 $0
 endsnippet
