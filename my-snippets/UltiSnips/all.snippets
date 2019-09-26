@@ -72,8 +72,14 @@ snippet sui_fields "semantic ui form fields wrapper" bm
 </div>
 endsnippet
 
-snippet sui_field "semantic ui input field" bm
-<div class="$0field">
+snippet sui_field "semantic ui field wrapper" bm
+<div class="$1 field">
+    $0
+</div>
+endsnippet
+
+snippet sui_field_input "semantic ui input field" bm
+<div class="$0 field">
     <label>${1:label}</label>
     <input type="text" id="${2:id}" name="${3:name}" placeholder="${4:placeholder}">
 </div>
@@ -83,6 +89,15 @@ snippet sui_toggle "semantic ui toggle checkbox" bm
 <div class="ui toggle checkbox">
     <input id="${1:id}" type="checkbox" name="${2:name}" value="1" @if (${3:checked}$0) checked @endif >
 </div>
+endsnippet
+
+snippet sui_radio "semantic ui radio input"
+<div class="ui radio checkbox">
+    <input type="radio" name="$1" value="$2" checked="" tabindex="0" class="hidden">
+    <label>$3</label>
+</div>
+
+$0
 endsnippet
 
 snippet sui_grid "semantic ui grid" bm
