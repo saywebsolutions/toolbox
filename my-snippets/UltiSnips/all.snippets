@@ -643,7 +643,7 @@ snippet larablog_full "larablog post"
 title: $1
 keywords: $2
 description: $3
-date: `!p snip.rv = strftime("%b %d %Y")`
+date: `!p snip.rv = datetime.now().strftime("%b %d %Y")`
 tags: $4
 permalink: /${5:blog}/`!p snip.rv = snip.basename`
 redirect_from:
@@ -658,7 +658,7 @@ snippet larablog "larablog post"
 title: $1
 keywords: $2
 description: $3
-date: `!p snip.rv = strftime("%b %d %Y")`
+date: `!p snip.rv = datetime.now().strftime("%b %d %Y")`
 tags: $4
 permalink: /${5:blog}/`!p snip.rv = snip.basename`
 ---
