@@ -643,9 +643,9 @@ snippet larablog_full "larablog post"
 title: $1
 keywords: $2
 description: $3
-date: `!p strftime("%b %d %Y")`
+date: `!p snip.rv = strftime("%b %d %Y")`
 tags: $4
-permalink: /${5:blog}/`!p snip.basename`
+permalink: /${5:blog}/`!p snip.rv = snip.basename`
 redirect_from:
   - /some/old/url
   - /some/old/format.html
@@ -658,9 +658,9 @@ snippet larablog "larablog post"
 title: $1
 keywords: $2
 description: $3
-date: `!p strftime("%b %d %Y")`
+date: `!p snip.rv = strftime("%b %d %Y")`
 tags: $4
-permalink: /${5:blog}/`!p snip.basename`
+permalink: /${5:blog}/`!p snip.rv = snip.basename`
 ---
 $0
 endsnippet
