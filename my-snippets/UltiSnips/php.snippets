@@ -397,7 +397,7 @@ $cli = new $1();
 $cli->run();
 endsnippet
 
-snippet l_cmd "laravel artisan command boilerplate"
+snippet l_cmd_base "laravel artisan command boilerplate"
 <?php
 
 namespace App\Console\Commands;
@@ -437,6 +437,64 @@ class $1 extends Command
      */
     public function handle()
     {
+        $3
+    }
+}
+//TODO - move this to app/Console/Kernel.php to register command
+//Commands\\$1::class,
+endsnippet
+
+snippet l_cmd "laravel artisan command boilerplate with dry run option"
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+class $1 extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = '$1'
+        {--D|dry : Dry run}
+    ;
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = '$2';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+
+        $dry = $this->option('dry');
+
+        if($dry){
+            $this->info('Dry run option enabled - no changes will be made');
+        }else{
+            $this->warn('Dry run option disabled - changes will be applied.');
+        }
+
         $3
     }
 }
