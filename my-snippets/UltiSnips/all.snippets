@@ -27,6 +27,17 @@ snippet bs3_input "bootstrap 3 input field" bm
 $0
 endsnippet
 
+snippet bs3_panel "bootstrap 3 panel"
+<div class="panel panel-${1:default}">
+    <div class="panel-heading">
+        <h3 class="panel-title">$2</h3>
+    </div>
+    <div class="panel-body">
+        $3
+    </div>
+</div>
+endsnippet
+
 snippet bs4_alert "bootstrap 4 alert" bm
 <div class="alert alert-$1" role="alert">
     <h5 class="alert-heading">$2</h5><hr>
