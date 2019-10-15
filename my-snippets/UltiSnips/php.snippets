@@ -249,6 +249,15 @@ snippet lm_str_null "laravel migration for nullable string column" bm
 $table->string('${1:col}')->nullable();
 endsnippet
 
+snippet lm_enum "laravel migration enum"
+//defaults to first option declared in array
+$table->enum('$1', ['$2', '$3']);
+endsnippet
+
+snippet lm_enum_null "laravel migration enum default null"
+$table->enum('$1', ['$2', '$3'])->nullable();
+endsnippet
+
 snippet scandir "php scandir strategy" bm
 $path = '${1:path}';
 $files = array_diff(scandir($path), ['.', '..']);
