@@ -19,3 +19,13 @@ endsnippet
 snippet comment "blade comment"
 {{-- $1 --}}
 endsnippet
+
+snippet chunk "chunk collection results"
+@foreach ($$1->chunk($2) as $chunk)
+    <div class="row">
+        @foreach ($chunk as $$3)
+            <div class="col-xs-$4">{{ $$3->$5 }}</div>
+        @endforeach
+    </div>
+@endforeach
+endsnippet
