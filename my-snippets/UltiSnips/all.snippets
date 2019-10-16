@@ -200,6 +200,12 @@ $.ajax({
   });
 endsnippet
 
+snippet jq_get "jquery get"
+$.get("/$1"+$2, function (data) {
+    $('$3').html(data);
+});
+endsnippet
+
 snippet jq_get_json "jquery get json shorthand" bm
 $.getJSON( "$1", {foo: "bar" })
     .done(function(response){
