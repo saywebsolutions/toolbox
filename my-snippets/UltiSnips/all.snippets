@@ -143,6 +143,18 @@ snippet sui_msg "semantic ui message"
 </div>
 endsnippet
 
+snippet sui_val "semantic ui form field validation long form"
+$1: {
+    identifier : '$1',
+    rules: [
+        {
+            type   : '$2',
+            prompt : '{{ translate('$3') }}'
+        }
+    ]
+},
+endsnippet
+
 snippet hidden_input "hidden input field" bm
 <input type="hidden" id="${1:id}" name="${2:name}" value="${3:value}">$0
 endsnippet
