@@ -111,8 +111,26 @@ snippet sui_radio "semantic ui radio input"
     <input type="radio" name="$1" value="$2" checked="" tabindex="0" class="hidden">
     <label>$3</label>
 </div>
-
 $0
+endsnippet
+
+snippet sui_inline_radio "semantic ui inline radio inputs"
+<div class="inline fields">
+    <label for="$1">$2</label>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" name="$1" checked="" tabindex="0" class="hidden">
+            <label>$3</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" name="$1" tabindex="0" class="hidden">
+            <label>$4</label>
+        </div>
+    </div>
+</div>
+$('.ui.radio.checkbox').checkbox();$0
 endsnippet
 
 snippet sui_grid "semantic ui grid" bm
