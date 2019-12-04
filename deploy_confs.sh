@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# check for existence of curl
+if [ ! -x /usr/bin/curl ] ; then
+    # command is posix compliant way to check for a program, in case curl isn't in /usr/bin
+    command -v curl >/dev/null 2>&1 || { echo >&2 "Please install curl. Aborting."; exit 1; }
+fi
+
 cd ~/
 
 for x in '.vimrc' '.screenrc' '.toprc' '.bashrc' '.bash_profile' '.gitconfig' '.tmux.conf' '.sqliterc';

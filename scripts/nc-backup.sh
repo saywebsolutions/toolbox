@@ -4,6 +4,7 @@ cd ~/
 
 DIRNAME=nextcloud-backup-$(date +%Y%m%d%H%M%S)
 
+mkdir $DIRNAME
 cd $DIRNAME
 
 echo 'Taking backup of web root'

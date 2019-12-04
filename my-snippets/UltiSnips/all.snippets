@@ -1,3 +1,7 @@
+global !p
+from datetime import datetime
+endglobal
+
 snippet css_media_q "media queries" bm
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
@@ -21,6 +25,17 @@ snippet bs3_input "bootstrap 3 input field" bm
     <input type="${3:text}" class="form-control" id="${4:id}" name="${5:name}" placeholder="${6:placeholder}" value="{{ old('${7:old_value}', ${8:property}) }}">
 </div>
 $0
+endsnippet
+
+snippet bs3_panel "bootstrap 3 panel"
+<div class="panel panel-${1:default}">
+    <div class="panel-heading">
+        <h3 class="panel-title">$2</h3>
+    </div>
+    <div class="panel-body">
+        $3
+    </div>
+</div>
 endsnippet
 
 snippet bs4_alert "bootstrap 4 alert" bm
@@ -66,8 +81,20 @@ snippet bs4_tabs "bootstrap 4 tabs" bm
 </div>
 endsnippet
 
-snippet sui_field "semantic ui input field" bm
-<div class="$0field">
+snippet sui_fields "semantic ui form fields wrapper" bm
+<div class="fields">
+    $0
+</div>
+endsnippet
+
+snippet sui_field "semantic ui field wrapper" bm
+<div class="$1 field">
+    $0
+</div>
+endsnippet
+
+snippet sui_field_input "semantic ui input field" bm
+<div class="$0 field">
     <label>${1:label}</label>
     <input type="text" id="${2:id}" name="${3:name}" placeholder="${4:placeholder}">
 </div>
@@ -77,6 +104,33 @@ snippet sui_toggle "semantic ui toggle checkbox" bm
 <div class="ui toggle checkbox">
     <input id="${1:id}" type="checkbox" name="${2:name}" value="1" @if (${3:checked}$0) checked @endif >
 </div>
+endsnippet
+
+snippet sui_radio "semantic ui radio input"
+<div class="ui radio checkbox">
+    <input type="radio" name="$1" value="$2" checked="" tabindex="0" class="hidden">
+    <label>$3</label>
+</div>
+$0
+endsnippet
+
+snippet sui_inline_radio "semantic ui inline radio inputs"
+<div class="inline fields">
+    <label for="$1">$2</label>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" name="$1" checked="" tabindex="0" class="hidden">
+            <label>$3</label>
+        </div>
+    </div>
+    <div class="field">
+        <div class="ui radio checkbox">
+            <input type="radio" name="$1" tabindex="0" class="hidden">
+            <label>$4</label>
+        </div>
+    </div>
+</div>
+$('.ui.radio.checkbox').checkbox();$0
 endsnippet
 
 snippet sui_grid "semantic ui grid" bm
@@ -105,6 +159,18 @@ snippet sui_msg "semantic ui message"
   <div class="header">$1</div>
   <p>$2</p>
 </div>
+endsnippet
+
+snippet sui_val "semantic ui form field validation long form"
+$1: {
+    identifier: '$1',
+    rules: [
+        {
+            type: '$2',
+            prompt: '{{ translate('$3') }}'
+        }
+    ]
+},$0
 endsnippet
 
 snippet hidden_input "hidden input field" bm
@@ -164,6 +230,12 @@ $.ajax({
   });
 endsnippet
 
+snippet jq_get "jquery get"
+$.get("/$1"+$2, function (data) {
+    $('$3').html(data);
+});
+endsnippet
+
 snippet jq_get_json "jquery get json shorthand" bm
 $.getJSON( "$1", {foo: "bar" })
     .done(function(response){
@@ -171,7 +243,19 @@ $.getJSON( "$1", {foo: "bar" })
     })
     .fail(function(jqxhr, textStatus, error) {
         console.log("Request failed: "+textStatus+", "+error);
-    });
+    })
+;
+endsnippet
+
+snippet jq_post "jquery post shorthand"
+var posting = $.post( "$1", ${2:{ var: value }} );
+posting.done(function( data ) {
+    $0
+});
+posting.fail(function( data ) {
+});
+posting.always(function( data ) {
+});
 endsnippet
 
 snippet jq_each "jquery each"
@@ -186,6 +270,10 @@ endsnippet
 
 snippet jq_disable "disable an element (via property) in jquery"
 $("$1").prop("disabled", true);
+endsnippet
+
+snippet jq_hide "hide an element in jquery"
+$('$1').hide();
 endsnippet
 
 snippet jq_append  "jquery append boilerplate"
@@ -280,6 +368,21 @@ snippet sui_def_table "semantic ui definition table" bm
       <td>set rating</td>
       <td>rating (integer)</td>
       <td>Sets the current star rating to specified value</td>
+    </tr>
+  </tbody>
+</table>
+endsnippet
+
+snippet sui_table "semantic ui table" bm
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>$1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="$1"></td>
     </tr>
   </tbody>
 </table>
@@ -449,6 +552,10 @@ endsnippet
 snippet po ".po file language translation" bm
 msgid "$1"
 msgstr "$2"
+
+$0msgid "$1"
+msgctxt "$2"
+msgstr "$3"
 endsnippet
 
 snippet chunk "chunk results collection in blade" bm
@@ -557,6 +664,10 @@ function getQueryParam(param) {
 }
 endsnippet
 
+snippet js_hash "get the hash of the current url in a js var"
+var hash = location.hash.replace('#', '');
+endsnippet
+
 snippet json_count "get count of elements for a given bit of json"
 var count = Object.keys($1).length;
 endsnippet
@@ -564,7 +675,6 @@ endsnippet
 snippet lb "let's blog post"
 ---
 title: $1
-slug: $2
 keywords: $3
 meta: $4
 published_at: `!v strftime("%Y-%m-%d")`
@@ -573,7 +683,68 @@ tags: $6
 $0
 endsnippet
 
+snippet lbp "let's blog page"
+---
+title: $1
+keywords: $3
+meta: $4
+published_at: `!v strftime("%Y-%m-%d")`
+---
+$0
+endsnippet
+
+snippet larablog_full "larablog post"
+---
+title: $1
+keywords: $2
+description: $3
+date: `!p snip.rv = datetime.now().strftime("%b %d %Y")`
+tags: $4
+permalink: /${5:blog}/`!p snip.rv = snip.basename`
+redirect_from:
+  - /some/old/url
+  - /some/old/format.html
+---
+$0
+endsnippet
+
+snippet larablog "larablog post"
+---
+title: $1
+keywords: $2
+description: $3
+date: `!p snip.rv = datetime.now().strftime("%b %d %Y")`
+tags: $4
+permalink: /${5:blog}/`!p snip.rv = snip.basename`
+---
+$0
+endsnippet
+
 snippet sf_debug "salesforce form debug"
 <input type="hidden" name="debug" value="1">
 <input type="hidden" name="debugEmail" value="$1">
+endsnippet
+
+snippet js_switch "js switch"
+switch ($1) {
+    case $2:
+        $3
+        break;
+    default:
+        $4
+        break;
+}
+endsnippet
+
+snippet l_gitignore "laravel gitignore"
+/node_modules
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
+endsnippet
+
+snippet l_request_is "laravel request->is()"
+request()->is('$1*')
 endsnippet

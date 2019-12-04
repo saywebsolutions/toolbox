@@ -1,0 +1,31 @@
+snippet inc "@include directive"
+@include('$1')
+endsnippet
+
+snippet inc_if "@includeIf directive"
+@includeIf('$1')
+endsnippet
+
+snippet sui_header "semantic ui header partial include"
+@include('layouts.partials.semanticHeader', [
+    'icon' => '$1',
+    'iconStyle' => null,
+    'heading' => ${2:$pageTitle},
+    'subheading' => ${3:$pageDescription},
+    'noHr' => null,
+])
+endsnippet
+
+snippet comment "blade comment"
+{{-- $1 --}}
+endsnippet
+
+snippet chunk "chunk collection results"
+@foreach ($$1->chunk($2) as $chunk)
+    <div class="row">
+        @foreach ($chunk as $$3)
+            <div class="col-xs-$4">{{ $$3->$5 }}</div>
+        @endforeach
+    </div>
+@endforeach
+endsnippet
