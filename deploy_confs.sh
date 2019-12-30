@@ -11,7 +11,7 @@ cd ~/
 for x in '.vimrc' '.screenrc' '.toprc' '.bashrc' '.bash_profile' '.gitconfig' '.tmux.conf' '.sqliterc';
 do
     echo "Deploying $x..."
-    ln -sf "repos/configs/$x"
+    ln -sf "repos/toolbox/$x"
 done
 
 if [ ! -d ".config" ]; then
@@ -27,7 +27,7 @@ fi
 for x in 'config';
 do
     echo "Deploying .config/i3/$x..."
-    ln -sf "../../repos/configs/.config/i3/$x" ".config/i3/$x"
+    ln -sf "../../repos/toolbox/.config/i3/$x" ".config/i3/$x"
 done
 
 if [ ! -d ".config/nvim" ]; then
@@ -38,7 +38,7 @@ fi
 for x in 'init.vim';
 do
     echo "Deploying .config/nvim/$x..."
-    ln -sf "../../repos/configs/.vimrc" ".config/nvim/$x"
+    ln -sf "../../repos/toolbox/.vimrc" ".config/nvim/$x"
 done
 
 # VIM PACKAGE MANAGEMENT USING PATHOGEN + PLUGINS
@@ -130,7 +130,7 @@ if [ ! -d ".fzf" ]; then
 fi
 
 echo -e "\nLinking custom snippets."
-ln -sf "../repos/configs/my-snippets/" ".vim/"
+ln -sf "../repos/toolbox/my-snippets/" ".vim/"
 
 echo -e "\nHopefully, great success."
 echo -e "\r"
