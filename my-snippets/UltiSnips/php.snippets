@@ -515,3 +515,11 @@ snippet throw "throw exception"
 throw new \Exception('$1');
 $0
 endsnippet
+
+snippet json_decode "json_decode with error handling"
+json_decode($response, true);
+
+if(json_last_error() !== JSON_ERROR_NONE){
+    throw new \Exception('json not well-formed; json error code: '.json_last_error());
+}
+endsnippet
