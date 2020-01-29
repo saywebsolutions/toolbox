@@ -9,35 +9,35 @@ else
     cd repos
 fi
 
-if [ ! -d "configs-releases" ]; then
-    mkdir configs-releases && cd configs-releases
-    echo 'Created /repos/configs-releases directory.'
+if [ ! -d "toolbox-releases" ]; then
+    mkdir toolbox-releases && cd toolbox-releases
+    echo 'Created /repos/toolbox-releases directory.'
 else
-    cd configs-releases
+    cd toolbox-releases
 fi
 
-wget https://github.com/whabash090/configs/archive/master.zip
+wget https://github.com/saywebsolutions/toolbox/archive/master.zip
 
-DIRNAME=configs-$(date +%Y%m%d%H%M%S)
+DIRNAME=toolbox-$(date +%Y%m%d%H%M%S)
 
 unzip master.zip -d $DIRNAME
 
 rm master.zip
 
-cd $DIRNAME/configs-master
+cd $DIRNAME/toolbox-master
 
 cp -rT . ../
 
 cd ../
 
-rm -rf configs-master
+rm -rf toolbox-master
 
 cd ../../
 
-if [ ! -d "configs/.git" ]; then
-  ln -snf configs-releases/$DIRNAME configs
+if [ ! -d "toolbox/.git" ]; then
+  ln -snf toolbox-releases/$DIRNAME toolbox
 else
   echo 'VCS detected, aborting update.'
 fi
 
-~/repos/configs/./deploy_confs.sh
+~/repos/toolbox/./deploy_confs.sh
