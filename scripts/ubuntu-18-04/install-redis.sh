@@ -30,12 +30,14 @@ echo "get test" | redis-cli
 
 RPW=$(openssl rand 60 | openssl base64 -A)
 
-sed --in-place "s/^requirepass foobared.*/requirepass ${PWD}/g" /etc/redis/redis.conf
+echo ${RPW}
+
+sed --in-place "s|# requirepass foobared|requirepass ${RPW}|g" /etc/redis/redis.conf
 
 echo "get test" | redis-cli
 
 systemctl restart redis
 
-echo "set testpassword haipassword" | redis-cli
+echo "set testpassword haipassword" | redis-cli -a ${RPW}
 
-echo "get testpasword" | redis-cli
+echo "get testpassword" | redis-cli -a ${RPW}
