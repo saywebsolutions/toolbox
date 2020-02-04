@@ -28,7 +28,7 @@ echo "get test" | redis-cli
 #server by default should be bound to localhost only, so no need to adjust bind param
 # bind 127.0.0.1 ::1
 
-RPW = $(openssl rand 60 | openssl base64 -A)
+RPW=$(openssl rand 60 | openssl base64 -A)
 
 sed --in-place "s/^requirepass foobared.*/requirepass ${PWD}/g" /etc/redis/redis.conf
 
