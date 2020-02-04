@@ -11,7 +11,7 @@ apt-get -y autoremove
 
 apt install -y redis-server
 sed --in-place 's/^supervised.*/supervised systemd/g' /etc/redis/redis.conf
-systemctl reload redis.service
+systemctl restart redis
 
 systemctl status redis
 
