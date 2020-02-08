@@ -38,6 +38,15 @@ snippet bs3_panel "bootstrap 3 panel"
 </div>
 endsnippet
 
+snippet bs3_list_group "bootstrap 3 list group with labels"
+<ul class="list-group">
+    <li class="list-group-item">
+        <span class="badge">$2</span>
+        $1
+    </li>
+</ul>
+endsnippet
+
 snippet bs4_alert "bootstrap 4 alert" bm
 <div class="alert alert-$1" role="alert">
     <h5 class="alert-heading">$2</h5><hr>
@@ -747,4 +756,9 @@ endsnippet
 
 snippet l_request_is "laravel request->is()"
 request()->is('$1*')
+endsnippet
+
+snippet hugo_comment "hugo template comments"
+{{/* $1 */}}
+$0
 endsnippet
