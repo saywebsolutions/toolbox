@@ -118,6 +118,10 @@ if [ ! -d ".vim/bundle/neomake" ]; then
   cd .vim/bundle && git clone git://github.com/neomake/neomake.git && cd ~/
 fi
 
+if [ ! -d ".vim/bundle/vim-gutentags" ]; then
+  cd .vim/bundle && git clone https://github.com/ludovicchabant/vim-gutentags.git && cd ~/
+fi
+
 # vim swap and backup files dir
 if [ ! -d ".vim/swapfiles" ]; then
   mkdir -p ~/.vim/swapfiles && cd ~/
