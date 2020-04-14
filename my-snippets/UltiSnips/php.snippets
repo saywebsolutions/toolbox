@@ -80,7 +80,6 @@ return view('$1')
 ;
 endsnippet
 
-
 snippet l_response_json "dispatch laravel json response" bm
 return response()->json([ $0 ]);
 endsnippet
@@ -558,4 +557,20 @@ json_decode($response, true);
 if(json_last_error() !== JSON_ERROR_NONE){
     throw new \Exception('json not well-formed; json error code: '.json_last_error());
 }
+endsnippet
+
+snippet json_encode "json_encode with error handling"
+try {
+
+    $$1 = json_encode($2);
+
+    if($1 === false){
+        throw new \Exception('json_encode() failed: '.json_last_error_msg().' (Error code: '.json_last_error().')');
+    }
+
+} catch (\Exception $e) {
+    \Log::error(__METHOD__." failed.\tMessage: ".$e->getMessage());
+}
+
+$0
 endsnippet
