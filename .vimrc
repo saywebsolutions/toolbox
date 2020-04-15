@@ -35,12 +35,57 @@ set ff=unix             " unix line endings
 set autoindent
 set smartindent
 
+filetype plugin on
+"set omnifunc=syntaxcomplete#Complete
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
 set directory=~/.vim/swapfiles//
 set backupdir=~/.vim/swapfiles//
 
 au BufNewFile,BufRead *.liquid setlocal ft=html
 
-:let g:mapleader = "\<Space>" " remap <leader> key to space
+let g:mapleader = "\<Space>" " remap <leader> key to space
+
+"shortcut to turn off search highlights
+map <leader>h :noh<CR>
+
+map <leader>p :set paste!<CR>
+
+function! ToggleLineNumber()
+  if v:version > 703
+"    set norelativenumber!
+  endif
+  set nonumber!
+endfunction
+
+nnoremap <leader>l :call ToggleLineNumber()<CR>
+
+" ----- gutentags settings ----------------------------------------------------
+
+let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+                            \ '*.phar', '*.ini', '*.rst', '*.md',
+                            \ '*vendor/*/test*', '*vendor/*/Test*',
+                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+                            \ '*var/cache*', '*var/log*', '*node_modules*']
+
+" ----- gutentags settings end ------------------------------------------------
+
+
+" ----- tagbar settings -------------------------------------------------------
+
+"toggle tagbar
+nnoremap <leader>t :TagbarToggle<CR>
+
+"autofocus on tagbar window when opened
+let g:tagbar_autofocus = 1
+
+"get rid of help boilerplate at top of window
+let g:tagbar_compact = 1
+
+let g:tagbar_indent = 1
+
+" ----- tagbar settings end ---------------------------------------------------
+
 
 "set cursorline         " underline current line
 
@@ -66,7 +111,9 @@ if executable('fzf')
 
 "fzf
 
-  set rtp+=~/gocode/fzf
+"  set rtp+=~/gocode/fzf
+"  set rtp+=~/.fzf/bin/fzf
+  set rtp+=~/.fzf
 
   " FZF {{{
   " <S-p> to search files

@@ -119,11 +119,19 @@ if [ ! -d ".vim/bundle/neomake" ]; then
 fi
 
 if [ ! -d ".vim/bundle/vim-gutentags" ]; then
-  cd .vim/bundle && git clone https://github.com/ludovicchabant/vim-gutentags.git && cd ~/
+  cd .vim/bundle && git clone git@github.com:ludovicchabant/vim-gutentags.git && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/phpcomplete" ]; then
-  cd .vim/bundle && git clone https://github.com/shawncplus/phpcomplete.vim.git && cd ~/
+if [ ! -d ".vim/bundle/phpcomplete.vim" ]; then
+  cd .vim/bundle && git clone git@github.com:shawncplus/phpcomplete.vim.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/lightline.vim" ]; then
+  cd .vim/bundle && git clone git@github.com:itchyny/lightline.vim.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/tagbar" ]; then
+  cd .vim/bundle && git clone git@github.com:majutsushi/tagbar.git && cd ~/
 fi
 
 # vim swap and backup files dir
