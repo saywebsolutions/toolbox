@@ -16,18 +16,21 @@ set shiftwidth=4
 set expandtab
 
 syntax on               " syntax highlighting
-colorscheme desert      " set colorscheme
+"colorscheme desert      " set colorscheme
 set t_Co=256
 set background=dark
+colorscheme solarized
+
 set nocompatible        " use Vim defaults
 set shortmess+=I        " disable the welcome screen
-set complete+=k         " enable dictionary completion
-set completeopt+=longest
+"set complete+=k         " enable dictionary completion
+"set completeopt+=longest
 set backspace=2         " full backspacing capabilities
 set history=100         " 100 lines of command line history
 set laststatus=2
-set ruler               " ruler display in status line
-set showmode            " show mode at bottom of screen
+"set showmode            " show mode at bottom of screen
+set noshowmode          " Disable show mode info
+"set ruler               " ruler display in status line
 set cmdheight=2         " set the command height
 set showmatch           " show matching brackets (),{},[]
 set mat=5               " show matching brackets for 0.5 seconds
@@ -38,6 +41,40 @@ set smartindent
 filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+set completeopt=longest,menuone
+
+" ----- supertab settings -----------------------------------------------------
+
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabCrMapping = 1
+
+" ----- supertab settings end -------------------------------------------------
+
+
+" ----- lightline settings ----------------------------------------------------
+
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ } 
+
+let g:lightline.tabline = {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['close'] ]
+  \ }
+
+"set showtabline=2  " Show tabline
+set guioptions-=e  " Don't use GUI tabline
+
+" ----- lightline settings ----------------------------------------------------
+
 
 set directory=~/.vim/swapfiles//
 set backupdir=~/.vim/swapfiles//
@@ -201,41 +238,3 @@ autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade
 
 "from :help php-indent - classic indentation for case/default in switch statements
 :let g:PHP_vintage_case_default_indent = 1
-
-" Better indent support for PHP by making it possible to indent HTML sections
-" as well.
-"if exists("b:did_indent")
-"  finish
-"endif
-"" This script pulls in the default indent/php.vim with the :runtime command
-"" which could re-run this script recursively unless we catch that:
-"if exists('s:doing_indent_inits')
-"  finish
-"endif
-"let s:doing_indent_inits = 1
-"runtime! indent/html.vim
-"unlet b:did_indent
-"runtime! indent/php.vim
-"unlet s:doing_indent_inits
-"function! GetPhpHtmlIndent(lnum)
-"  if exists('*HtmlIndent')
-"    let html_ind = HtmlIndent()
-"  else
-"    let html_ind = HtmlIndentGet(a:lnum)
-"  endif
-"  let php_ind = GetPhpIndent()
-"  " priority one for php indent script
-"  if php_ind > -1
-"    return php_ind
-"  endif
-"  if html_ind > -1
-"    if getline(a:lnum) =~ "^<?" && (0< searchpair('<?', '', '?>', 'nWb')
-"          \ || 0 < searchpair('<?', '', '?>', 'nW'))
-"      return -1
-"    endif
-"    return html_ind
-"  endif
-"  return -1
-"endfunction
-"setlocal indentexpr=GetPhpHtmlIndent(v:lnum)
-"setlocal indentkeys+=<>>
