@@ -58,6 +58,10 @@ cd ~/
 #  cd .vim/bundle && git clone git://github.com/airblade/vim-gitgutter.git && cd ~/
 #fi
 
+if [ ! -d ".vim/bundle/vim-fugitive" ]; then
+  cd .vim/bundle && git clone git@github.com:tpope/vim-fugitive.git && cd ~/
+fi
+
 if [ ! -d ".vim/bundle/vim-surround" ]; then
   cd .vim/bundle && git clone git://github.com/tpope/vim-surround.git && cd ~/
 fi
@@ -119,16 +123,48 @@ if [ ! -d ".vim/bundle/neomake" ]; then
 fi
 
 if [ ! -d ".vim/bundle/vim-gutentags" ]; then
-  cd .vim/bundle && git clone https://github.com/ludovicchabant/vim-gutentags.git && cd ~/
+  cd .vim/bundle && git clone git@github.com:ludovicchabant/vim-gutentags.git && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/phpcomplete" ]; then
-  cd .vim/bundle && git clone https://github.com/shawncplus/phpcomplete.vim.git && cd ~/
+if [ ! -d ".vim/bundle/phpcomplete.vim" ]; then
+  cd .vim/bundle && git clone git@github.com:shawncplus/phpcomplete.vim.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/lightline.vim" ]; then
+  cd .vim/bundle && git clone git@github.com:itchyny/lightline.vim.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/tagbar" ]; then
+  cd .vim/bundle && git clone git@github.com:majutsushi/tagbar.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/lightline-ale" ]; then
+  cd .vim/bundle && git clone git@github.com:maximbaz/lightline-ale.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/supertab" ]; then
+  cd .vim/bundle && git clone git@github.com:ervandew/supertab.git && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/ale" ]; then
+  cd .vim/bundle && git clone https://github.com/dense-analysis/ale.git && cd ~/
 fi
 
 # vim swap and backup files dir
 if [ ! -d ".vim/swapfiles" ]; then
   mkdir -p ~/.vim/swapfiles && cd ~/
+fi
+
+#themes
+
+# vim swap and backup files dir
+if [ ! -d ".vim/colors" ]; then
+  mkdir -p ~/.vim/colors && cd ~/
+fi
+
+if [ ! -d ".vim/bundle/vim-colors-solarized" ]; then
+  cd .vim/bundle && git clone git://github.com/altercation/vim-colors-solarized.git && cd ~/
+  cp ~/.vim/bundle/vim-colors-solarized/colors/solarized.vim ~/.vim/colors/ && cd ~/
 fi
 
 #dependencies

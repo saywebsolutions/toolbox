@@ -175,6 +175,32 @@ if ( $httpCode != 200 ){
 curl_close($ch);
 endsnippet
 
+snippet curl_post_json "post json with curl"
+$endpoint = '$1';
+
+$ch = \curl_init($endpoint);
+ 
+//The JSON data.
+$data = [
+    $2 => $3,
+];
+ 
+\curl_setopt($ch, CURLOPT_POST, 1);
+\curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+\curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']); 
+ 
+$result = \curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+if ($httpCode != 200){
+    echo "Return code is {$httpCode} \n".curl_error($ch);
+} else {
+    echo "<pre>".htmlspecialchars($response)."</pre>";
+}
+
+curl_close($ch);
+endsnippet
+
 snippet hasMany "Eloquent has many relationship" bm
 /**
  * ${3:desc}
