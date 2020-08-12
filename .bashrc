@@ -52,6 +52,7 @@ fi
 
 alias sk="ssh-keygen -t rsa -b 4096 -o -a 100"
 alias l_boiler="wget https://github.com/rappasoft/laravel-5-boilerplate/archive/master.zip"
+alias l_perms="sudo chmod -R ug+rwx storage bootstrap/cache"
 alias vif='vim $(fzf)'
 alias v='vim $(fzf)'
 
