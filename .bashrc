@@ -47,6 +47,13 @@ else
     alias ll="du -sh * | sort -rh | head -n 25"
     alias lynx="lynx -vikeys"
     alias untar="tar -xvzf"
+    alias testmic="arecord -vvv -f dat /dev/null"
+
+    #git
+
+    # I don't care about Ghostscript, and I will continue to not care about it
+    #   until the need arises (if ever) to fix the clobbering of the native 'gs' command
+    alias gs="git status"
 
 fi
 
