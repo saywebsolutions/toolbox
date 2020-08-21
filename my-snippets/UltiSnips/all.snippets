@@ -639,6 +639,13 @@ snippet a_vhost "apache vhost"
 </VirtualHost>
 endsnippet
 
+snippet a_basic_auth "apache basic auth"
+    AuthType Basic
+    AuthName "Restricted Content"
+    AuthUserFile /etc/apache2/.htpasswd
+    Require valid-user
+endsnippet
+
 snippet a_redirect "apache redirect"
     Redirect permanent / $1
 endsnippet
