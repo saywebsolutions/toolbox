@@ -1,5 +1,5 @@
 #!/bin/sh
 
-#install to ~/.config/autostart-scripts/ for autostart
+#install to ~/.config/autostart-scripts/
 
-tlp start < /dev/null
+sudo tlp start
