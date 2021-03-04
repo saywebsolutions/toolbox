@@ -407,6 +407,12 @@ if($1.hasOwnProperty($2)){
 }
 endsnippet
 
+snippet js_array_not_empty "check if js array not empty"
+if (typeof $1 != "undefined" && $1 != null && $1.length != null && $1.length > 0) {
+    $0
+}
+endsnippet
+
 snippet js_arr_has_key "check if js array has a given key" bm
 if("$1" in $2){
     $0
