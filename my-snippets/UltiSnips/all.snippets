@@ -2,6 +2,13 @@ global !p
 from datetime import datetime
 endglobal
 
+snippet css_bg "description"
+background-image: url('$1');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: top;
+endsnippet
+
 snippet css_media_q "media queries" bm
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default in Bootstrap
@@ -319,7 +326,7 @@ snippet bs_r "bootstrap row" bm
 endsnippet
 
 snippet bs_c "bootstrap col" bm
-<div class="col $1">
+<div class="col$1">
     $0
 </div>
 endsnippet

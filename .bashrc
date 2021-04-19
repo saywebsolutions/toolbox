@@ -48,6 +48,7 @@ else
     alias lynx="lynx -vikeys"
     alias untar="tar -xvzf"
     alias testmic="arecord -vvv -f dat /dev/null"
+    alias myip="ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
 
     #git
 
