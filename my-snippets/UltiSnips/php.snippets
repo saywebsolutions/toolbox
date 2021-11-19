@@ -600,3 +600,13 @@ try {
 
 $0
 endsnippet
+
+snippet files_in_dir "files in directory"
+foreach (new \DirectoryIterator($1) as $file) {
+    if ($file->isFile()) {
+        print $file->getFilename()."\n";
+        print $file->getPathname()."\n";
+        $0
+    }
+}
+endsnippet
