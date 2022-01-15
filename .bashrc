@@ -50,6 +50,10 @@ else
     alias testmic="arecord -vvv -f dat /dev/null"
     alias myip="ip -o route get to 8.8.8.8 | sed -n 's/.*src \([0-9.]\+\).*/\1/p'"
 
+    #docker
+    alias dup="docker-compose up -d"
+    alias ds="docker ps"
+
     #git
 
     # I don't care about Ghostscript, and I will continue to not care about it

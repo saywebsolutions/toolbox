@@ -16,10 +16,10 @@ set shiftwidth=4
 set expandtab
 
 syntax on               " syntax highlighting
-"colorscheme desert      " set colorscheme
+colorscheme desert      " set colorscheme
 set t_Co=256
 set background=dark
-colorscheme solarized
+"colorscheme solarized
 
 set nocompatible        " use Vim defaults
 set shortmess+=I        " disable the welcome screen
