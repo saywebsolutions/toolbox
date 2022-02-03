@@ -49,11 +49,15 @@ else
     alias untar="tar -xvzf"
     alias testmic="arecord -vvv -f dat /dev/null"
 
+    alias sc='sudo SYSTEMD_EDITOR=/bin/vim systemctl'
+
     #git
 
     # I don't care about Ghostscript, and I will continue to not care about it
     #   until the need arises (if ever) to fix the clobbering of the native 'gs' command
     alias gs="git status"
+
+    alias topmem="ps -e -orss=,args= |awk '{print \$1 \" \" \$2 }'| awk '{tot[\$2]+=\$1;count[\$2]++} END {for (i in tot) {print tot[i],i,count[i]}}' | sort -n | tail -n 15 | sort -nr | awk '{ hr=\$1/1024; printf(\"%13.2fM\", hr); print \"\t\" \$2 }'"
 
 fi
 
