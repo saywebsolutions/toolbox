@@ -43,14 +43,14 @@ done
 
 # VIM PACKAGE MANAGEMENT USING PATHOGEN + PLUGINS
 
-if [ ! -e ".vim/autoload/pathogen.vim" ]; then
+#if [ ! -e ".vim/autoload/pathogen.vim" ]; then
 
-  echo -e "\nInstalling Pathogen for managing vim plugins."
-  echo -e "\r"
+#  echo -e "\nInstalling Pathogen for managing vim plugins."
+#  echo -e "\r"
 
-  mkdir -p .vim/autoload .vim/bundle && curl -LSso .vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+#  mkdir -p .vim/autoload .vim/bundle && curl -LSso .vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-fi
+#fi
 
 cd ~/
 
@@ -74,13 +74,13 @@ if [ ! -d ".vim/bundle/ctrlp.vim" ]; then
   cd .vim/bundle && git clone git://github.com/ctrlpvim/ctrlp.vim && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/ultisnips" ]; then
-  cd .vim/bundle && git clone git://github.com/SirVer/ultisnips.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/ultisnips" ]; then
+#  cd .vim/bundle && git clone git://github.com/SirVer/ultisnips.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-snippets" ]; then
-  cd .vim/bundle && git clone git://github.com/honza/vim-snippets.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-snippets" ]; then
+#  cd .vim/bundle && git clone git://github.com/honza/vim-snippets.git && cd ~/
+#fi
 
 #if [ ! -d ".vim/bundle/vim-airline" ]; then
 #  cd .vim/bundle && git clone git://github.com/bling/vim-airline && cd ~/
@@ -90,57 +90,57 @@ fi
 #  cd .vim/bundle && git clone git://github.com/vim-airline/vim-airline-themes && cd ~/
 #fi
 
-if [ ! -d ".vim/bundle/vim-css-color" ]; then
-  cd .vim/bundle && git clone git://github.com/ap/vim-css-color && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-css-color" ]; then
+#  cd .vim/bundle && git clone git://github.com/ap/vim-css-color && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-php-cs-fixer" ]; then
-  cd .vim/bundle && git clone git://github.com/stephpy/vim-php-cs-fixer.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-php-cs-fixer" ]; then
+#  cd .vim/bundle && git clone git://github.com/stephpy/vim-php-cs-fixer.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-blade" ]; then
-  cd .vim/bundle && git clone git://github.com/jwalton512/vim-blade.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-blade" ]; then
+#  cd .vim/bundle && git clone git://github.com/jwalton512/vim-blade.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/PHP-Indenting-for-VIm" ]; then
-  cd .vim/bundle && git clone git://github.com/2072/PHP-Indenting-for-VIm.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/PHP-Indenting-for-VIm" ]; then
+#  cd .vim/bundle && git clone git://github.com/2072/PHP-Indenting-for-VIm.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-rooter" ]; then
-  cd .vim/bundle && git clone git://github.com/airblade/vim-rooter.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-rooter" ]; then
+#  cd .vim/bundle && git clone git://github.com/airblade/vim-rooter.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/fzf" ]; then
-  cd .vim/bundle && git clone git://github.com/junegunn/fzf.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/fzf" ]; then
+#  cd .vim/bundle && git clone git://github.com/junegunn/fzf.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/fzf.vim" ]; then
-  cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/fzf.vim" ]; then
+#  cd .vim/bundle && git clone git://github.com/junegunn/fzf.vim.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/neomake" ]; then
-  cd .vim/bundle && git clone git://github.com/neomake/neomake.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/neomake" ]; then
+#  cd .vim/bundle && git clone git://github.com/neomake/neomake.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/vim-gutentags" ]; then
-  cd .vim/bundle && git clone git@github.com:ludovicchabant/vim-gutentags.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/vim-gutentags" ]; then
+#  cd .vim/bundle && git clone git@github.com:ludovicchabant/vim-gutentags.git && cd ~/
+#fi
 
 if [ ! -d ".vim/bundle/phpcomplete.vim" ]; then
   cd .vim/bundle && git clone git@github.com:shawncplus/phpcomplete.vim.git && cd ~/
 fi
 
-if [ ! -d ".vim/bundle/lightline.vim" ]; then
-  cd .vim/bundle && git clone git@github.com:itchyny/lightline.vim.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/lightline.vim" ]; then
+#  cd .vim/bundle && git clone git@github.com:itchyny/lightline.vim.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/tagbar" ]; then
-  cd .vim/bundle && git clone git@github.com:majutsushi/tagbar.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/tagbar" ]; then
+#  cd .vim/bundle && git clone git@github.com:majutsushi/tagbar.git && cd ~/
+#fi
 
-if [ ! -d ".vim/bundle/lightline-ale" ]; then
-  cd .vim/bundle && git clone git@github.com:maximbaz/lightline-ale.git && cd ~/
-fi
+#if [ ! -d ".vim/bundle/lightline-ale" ]; then
+#  cd .vim/bundle && git clone git@github.com:maximbaz/lightline-ale.git && cd ~/
+#fi
 
 if [ ! -d ".vim/bundle/supertab" ]; then
   cd .vim/bundle && git clone git@github.com:ervandew/supertab.git && cd ~/
@@ -168,10 +168,11 @@ if [ ! -d ".vim/bundle/vim-colors-solarized" ]; then
 fi
 
 #dependencies
-if [ ! -d ".fzf" ]; then
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
-fi
+#handled by plug vim plugin manager
+#if [ ! -d ".fzf" ]; then
+#  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+#  ~/.fzf/install
+#fi
 
 echo -e "\nLinking custom snippets."
 ln -sf "../repos/toolbox/my-snippets/" ".vim/"

@@ -1,55 +1,7 @@
 " .vimrc kjones
 
-set nocompatible        " use Vim defaults
-
-" Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-endif
-
-" Run PlugInstall if there are missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
-
-call plug#begin()
-
-" Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'junegunn/seoul256.vim'
-
-if v:version >= 703
-  Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
-endif
-
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-
-Plug 'itchyny/lightline.vim'
-
-Plug 'ludovicchabant/vim-gutentags'
-
-Plug 'tpope/vim-fugitive'
-
-"Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'php'}
-
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
-
-Plug 'jwalton512/vim-blade', { 'for': 'blade' }
-
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-
-Plug 'Keithbsmiley/investigate.vim'
-
-Plug 'ap/vim-css-color'
-
-call plug#end()
+" ----- Initiate Pathogen -----------------------------------------------------
+execute pathogen#infect()
 
 " ----- General settings ------------------------------------------------------
 set backspace=indent,eol,start
@@ -64,53 +16,13 @@ set shiftwidth=4
 set expandtab
 
 syntax on               " syntax highlighting
+colorscheme desert      " set colorscheme
+set t_Co=256
+set background=dark
+"colorscheme solarized
 
-" seoul256 (dark):
-"   Range:   233 (darkest) ~ 239 (lightest)
-"   Default: 237
-let g:seoul256_background = 233
-colo seoul256
-
-set updatetime=250
-set hidden
+set nocompatible        " use Vim defaults
 set shortmess+=I        " disable the welcome screen
-set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 "set complete+=k         " enable dictionary completion
 "set completeopt+=longest
 set backspace=2         " full backspacing capabilities
@@ -126,18 +38,16 @@ set ff=unix             " unix line endings
 set autoindent
 set smartindent
 
-set switchbuf+=usetab,newtab
-
 filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 
-"set completeopt=longest,menuone
+set completeopt=longest,menuone
 
 " ----- supertab settings -----------------------------------------------------
 
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"let g:SuperTabCrMapping = 1
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabCrMapping = 1
 
 " ----- supertab settings end -------------------------------------------------
 
@@ -211,8 +121,6 @@ let g:tagbar_compact = 1
 
 let g:tagbar_indent = 1
 
-let g:tagbar_sort = 0
-
 " ----- tagbar settings end ---------------------------------------------------
 
 
@@ -234,15 +142,15 @@ let g:netrw_browse_split = 3
 " ----- Plugin settings / keymaps ---------------------------------------------
 
 "vim-rooter
-"  let g:rooter_patterns = ['.git/']
+  let g:rooter_patterns = ['.git/']
 
 if executable('fzf')
 
 "fzf
 
 "  set rtp+=~/gocode/fzf
-  set rtp+=~/.fzf/bin/fzf
-"  set rtp+=~/.fzf
+"  set rtp+=~/.fzf/bin/fzf
+  set rtp+=~/.fzf
 
   " FZF {{{
   " <S-p> to search files
@@ -330,30 +238,3 @@ autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade
 
 "from :help php-indent - classic indentation for case/default in switch statements
 :let g:PHP_vintage_case_default_indent = 1
-
-
-" ----------------------------------------------------------------------------
-" Todo
-" ----------------------------------------------------------------------------
-function! s:todo() abort
-  let entries = []
-  for cmd in ['git grep -n -e TODO 2> /dev/null',
-            \ 'grep -rn -e TODO * 2> /dev/null']
-    let lines = split(system(cmd), '\n')
-    if v:shell_error != 0 | continue | endif
-    for line in lines
-      let [fname, lno, text] = matchlist(line, '^\([^:]*\):\([^:]*\):\(.*\)')[1:3]
-      call add(entries, { 'filename': fname, 'lnum': lno, 'text': text })
-    endfor
-  endfor
-
-  if !empty(entries)
-    call setqflist(entries)
-    copen
-  endif
-endfunction
-command! Todo call s:todo()
-
-let g:vim_markdown_toc_autofit = 1
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_frontmatter = 1
