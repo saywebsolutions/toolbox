@@ -36,7 +36,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'php'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
@@ -358,3 +358,5 @@ command! Todo call s:todo()
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
+
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-phpls', 'coc-snippets']
