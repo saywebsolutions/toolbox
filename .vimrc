@@ -33,6 +33,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 "Plug 'ycm-core/YouCompleteMe'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': 'php'}
