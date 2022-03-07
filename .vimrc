@@ -32,6 +32,8 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'ludovicchabant/vim-gutentags'
 
+Plug 'wincent/ferret'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
