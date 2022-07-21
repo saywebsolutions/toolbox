@@ -71,8 +71,9 @@ syntax on               " syntax highlighting
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
-let g:seoul256_background = 233
-colo seoul256
+"let g:seoul256_background = 233
+"colo seoul256
+colo seoul256-light
 
 set updatetime=250
 set hidden
@@ -179,6 +180,9 @@ let g:mapleader = "\<Space>" " remap <leader> key to space
 "shortcut to turn off search highlights
 map <leader>h :noh<CR>
 
+map <leader>sd :colorscheme seoul256<CR>
+map <leader>sl :colorscheme seoul256-light<CR>
+
 map <leader>p :set paste!<CR>
 
 function! ToggleLineNumber()
@@ -189,6 +193,34 @@ function! ToggleLineNumber()
 endfunction
 
 nnoremap <leader>l :call ToggleLineNumber()<CR>
+
+function! PromptList(prompt, list)
+    let l:copy = copy(a:list)
+    for i in range(len(l:copy))
+        let l:copy[i] = (i + 1) . '. ' . l:copy[i]
+    endfor
+    let l:ret = inputlist([a:prompt] + l:copy)
+    if l:ret > 0 && l:ret < len(a:list)
+        return a:list[l:ret - 1]
+    else
+        return ''
+    endif
+endfunction
+
+function! ChangeColorscheme()
+    " Get a sorted list with the available color schemes.
+    let l:list = sort(map(
+                \ split(globpath(&runtimepath, 'colors/*.vim'), '\n'),
+                \ 'fnamemodify(v:val, ":t:r")'))
+
+    let l:prompt = 'Current color scheme is ' . g:colors_name
+    let l:color = PromptList(l:prompt, l:list)
+    if l:color != ''
+        exec 'colorscheme' l:color
+    endif
+endfunction
+
+nnoremap <leader>cc :call ChangeColorscheme()<CR>
 
 " ----- gutentags settings ----------------------------------------------------
 
