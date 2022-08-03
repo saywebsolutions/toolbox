@@ -35,6 +35,8 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'wincent/ferret'
 
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
+
 Plug 'tpope/vim-surround'
 
 "Plug 'ycm-core/YouCompleteMe'
@@ -51,6 +53,21 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'Keithbsmiley/investigate.vim'
 
 Plug 'ap/vim-css-color'
+
+" Colors
+Plug 'tomasr/molokai'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'morhetz/gruvbox'
+  let g:gruvbox_contrast_dark = 'soft'
+Plug 'yuttie/hydrangea-vim'
+Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'AlessandroYorba/Despacio'
+Plug 'cocopon/iceberg.vim'
+Plug 'w0ng/vim-hybrid'
+"Plug 'nightsense/snow'
+"Plug 'nightsense/stellarized'
+Plug 'arcticicestudio/nord-vim'
+"Plug 'nightsense/cosmic_latte'
 
 call plug#end()
 
@@ -72,8 +89,8 @@ syntax on               " syntax highlighting
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 "let g:seoul256_background = 233
-"colo seoul256
-colo seoul256-light
+colo seoul256
+"colo seoul256-light
 
 set updatetime=250
 set hidden
@@ -92,27 +109,8 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 "set complete+=k         " enable dictionary completion
@@ -220,7 +218,7 @@ function! ChangeColorscheme()
     endif
 endfunction
 
-nnoremap <leader>cc :call ChangeColorscheme()<CR>
+map <leader>cc :call ChangeColorscheme()<CR>
 
 " ----- gutentags settings ----------------------------------------------------
 
@@ -300,8 +298,25 @@ if executable('fzf')
   command! QHist call fzf#vim#search_history({'right': '40'})
   nnoremap q/ :QHist<CR>
 
-  command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': --no-color'})
-  " }}}
+"  command! -bang -nargs=* Ack call fzf#vim#ag(<q-args>, {'down': '40%', 'options': '--no-color'})
+
+  " Default options are --nogroup --column --color
+"  let s:ag_options = ' --one-device --skip-vcs-ignores --smart-case '
+"  let s:ag_options = ' --nogroup --column --color '
+
+"  command! -bang -nargs=* Ack
+"        \ call fzf#vim#ag(
+"        \   <q-args>,
+"        \   s:ag_options,
+"        \  <bang>0 ? fzf#vim#with_preview('up:60%')
+"        \        : fzf#vim#with_preview('right:50%:hidden', '?'),
+"        \   <bang>0
+"        \ )
+
+command! -bang -nargs=* Ack
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview('right:50%:hidden', '?'), <bang>0)
 
 else
 
