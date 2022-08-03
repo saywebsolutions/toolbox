@@ -9,22 +9,27 @@ sudo apt remove vim vim-runtime gvim
 # Configure and make
 cd ~/repos
 git clone https://github.com/vim/vim.git
-cd vim  
+cd vim
 
-./configure
+sudo make distclean
+
+sudo ./configure \
     --with-features=huge \
-    --enable-multibyte \
-    --enable-python3interp=yes \
-    --with-python3-config-dir=$(python3-config --configdir) \
-    --enable-gui=no \
-    --enable-cscope \ 
+    --without-x \
+    --disable-xsmp \
+    --disable-rightleft --disable-arabic \
+    --enable-python3interp \
+    --with-python3-command=python3 \
+    --with-python3-config-dir=$(python3-config --configdir|rev|cut -d/ -f1 --complement|rev) \
+    --disable-gui \
+    --enable-cscope \
     --disable-netbeans \
     --enable-fail-if-missing \
     --prefix=/usr/local/
-
+    
 #sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim81 
 
-make
+sudo make
 
 # Install
 sudo checkinstall
