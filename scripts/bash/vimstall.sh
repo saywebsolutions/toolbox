@@ -32,13 +32,16 @@ sudo ./configure \
 sudo make
 
 # Install
-sudo checkinstall
+#sudo checkinstall
+sudo make install
 
 # Set Vim as a default editor
-sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 100
 sudo update-alternatives --set editor /usr/local/bin/vim
-sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-sudo update-alternatives --set vi /usr/local/bin/vim   
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 100
+sudo update-alternatives --set vi /usr/local/bin/vim
+sudo update-alternatives --install /etc/alternatives/vim vim /usr/local/bin/vim 100
+#sudo update-alternatives --set vim /usr/local/bin/vim
 
 # Check if it worked
 vim --version
