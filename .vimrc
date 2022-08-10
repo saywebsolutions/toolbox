@@ -40,7 +40,7 @@ Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-surround'
 
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['php', 'javascript', 'markdown', 'go']}
 
 Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
 Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
@@ -49,6 +49,8 @@ Plug 'jwalton512/vim-blade', { 'for': 'blade' }
 
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 Plug 'Keithbsmiley/investigate.vim'
 
@@ -408,4 +410,4 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-phpls', 'coc-snippets']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-phpls', 'coc-snippets', 'coc-go']
