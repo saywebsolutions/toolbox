@@ -21,6 +21,7 @@ sudo ./configure \
     --enable-python3interp \
     --with-python3-command=python3 \
     --with-python3-config-dir=$(python3-config --configdir|rev|cut -d/ -f1 --complement|rev) \
+    --enable-rubyinterp
     --disable-gui \
     --enable-cscope \
     --disable-netbeans \

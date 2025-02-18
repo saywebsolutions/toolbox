@@ -15,6 +15,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin()
 
+Plug 'github/copilot.vim'
+
 " Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -40,36 +42,54 @@ Plug 'junegunn/gv.vim'
 Plug 'tpope/vim-surround'
 
 "Plug 'ycm-core/YouCompleteMe'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['php', 'javascript', 'markdown', 'go']}
 
-Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
-Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
+"Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['php', 'javascript', 'markdown', 'go', 'html', 'css', 'json', 'yaml', 'python', 'typescript', 'vim', 'bash', 'sh', 'dockerfile', 'perl', 'sql', 'toml', 'vue', 'xml']}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jwalton512/vim-blade', { 'for': 'blade' }
 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+"Plug '2072/PHP-Indenting-for-VIm', { 'for': 'php' }
+"Plug 'stephpy/vim-php-cs-fixer', { 'for': 'php' }
+"Plug 'friendsofphp/php-cs-fixer', { 'for': 'php' }
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+"Plug 'arnaud-lb/vim-php-namespace', { 'for': 'php' }
+
+"Plug 'neoclide/vim-jsx-improve', { 'for': 'javascript' }
+"Plug 'neoclide/vim-jsx-improve'
+Plug 'pangloss/vim-javascript', { 'for': [ 'javascript', 'svelte' ] }
+
+"
+"Plug 'evanleck/vim-svelte', { 'for': 'svelte' }
+"Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+
+" trying polyglot instead of individual plugins
+"
+"Plug 'sheerun/vim-polyglot'
+" https://github.com/sheerun/vim-polyglot#autoindent
+"let g:polyglot_disabled = ['autoindent', 'php']
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 
 Plug 'Keithbsmiley/investigate.vim'
 
 Plug 'ap/vim-css-color'
 
 " Colors
-Plug 'tomasr/molokai'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'morhetz/gruvbox'
-  let g:gruvbox_contrast_dark = 'soft'
-Plug 'yuttie/hydrangea-vim'
-Plug 'tyrannicaltoucan/vim-deep-space'
-Plug 'AlessandroYorba/Despacio'
-Plug 'cocopon/iceberg.vim'
-Plug 'w0ng/vim-hybrid'
+"Plug 'tomasr/molokai'
+"Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'morhetz/gruvbox'
+"  let g:gruvbox_contrast_dark = 'soft'
+"Plug 'yuttie/hydrangea-vim'
+"Plug 'tyrannicaltoucan/vim-deep-space'
+"Plug 'AlessandroYorba/Despacio'
+"Plug 'cocopon/iceberg.vim'
+"Plug 'w0ng/vim-hybrid'
 "Plug 'nightsense/snow'
 "Plug 'nightsense/stellarized'
-Plug 'arcticicestudio/nord-vim'
+"Plug 'arcticicestudio/nord-vim'
 "Plug 'nightsense/cosmic_latte'
+
+Plug 'vim-vdebug/vdebug', { 'for': 'php' }
 
 call plug#end()
 
@@ -81,9 +101,11 @@ set incsearch
 set hlsearch
 
 " ----- Tabs vs. Spaces -------------------------------------------------------
+set expandtab       " Expand TABs to spaces
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set softtabstop=4   " Sets the number of columns for a TAB
+
 
 syntax on               " syntax highlighting
 
@@ -115,26 +137,42 @@ endif
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Use K to show documentation in preview window.
+"nnoremap <silent> K :call ShowDocumentation()<CR>
+
+"function! ShowDocumentation()
+"  if CocAction('hasProvider', 'hover')
+"    call CocActionAsync('doHover')
+"  else
+"    call feedkeys('K', 'in')
+"  endif
+"endfunction
+
 "set complete+=k         " enable dictionary completion
 "set completeopt+=longest
 set backspace=2         " full backspacing capabilities
 set history=100         " 100 lines of command line history
 set laststatus=2
 "set showmode            " show mode at bottom of screen
-set noshowmode          " Disable show mode info
+set noshowmode          " Disable show mode info (lightline shows it)
 "set ruler               " ruler display in status line
 set cmdheight=2         " set the command height
 set showmatch           " show matching brackets (),{},[]
 set mat=5               " show matching brackets for 0.5 seconds
 set ff=unix             " unix line endings
 set autoindent
-set smartindent
+"set smartindent
 
 set switchbuf+=usetab,newtab
 
 filetype plugin on
 "set omnifunc=syntaxcomplete#Complete
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType javascriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 "set completeopt=longest,menuone
 
@@ -145,6 +183,14 @@ filetype plugin on
 
 " ----- supertab settings end -------------------------------------------------
 
+" ----- vdebug settings -------------------------------------------------------
+
+let g:vdebug_options = {
+  \  'path_maps': {
+  \  '/var/www': '/home/xan/repos/rxdeals',
+  \}}
+
+" ----- vdebug settings end ---------------------------------------------------
 
 " ----- lightline settings ----------------------------------------------------
 
@@ -155,7 +201,8 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'FugitiveHead',
+      \   'filename': 'LightlineFilename',
       \ },
       \ } 
 
@@ -163,6 +210,15 @@ let g:lightline.tabline = {
   \   'left': [ ['tabs'] ],
   \   'right': [ ['close'] ]
   \ }
+
+function! LightlineFilename()
+  let root = fnamemodify(get(b:, 'git_dir'), ':h')
+  let path = expand('%:p')
+  if path[:len(root)-1] ==# root
+    return path[len(root)+1:]
+  endif
+  return expand('%')
+endfunction
 
 "set showtabline=2  " Show tabline
 set guioptions-=e  " Don't use GUI tabline
@@ -175,7 +231,8 @@ set backupdir=~/.vim/swapfiles//
 
 au BufNewFile,BufRead *.liquid setlocal ft=html
 
-let g:mapleader = "\<Space>" " remap <leader> key to space
+"let g:mapleader = "\<Space>" " remap <leader> key to space
+let g:mapleader = ";" " remap <leader> key to ;
 
 "shortcut to turn off search highlights
 map <leader>h :noh<CR>
@@ -192,7 +249,7 @@ function! ToggleLineNumber()
   set nonumber!
 endfunction
 
-nnoremap <leader>l :call ToggleLineNumber()<CR>
+map <leader>l :call ToggleLineNumber()<CR>
 
 function! PromptList(prompt, list)
     let l:copy = copy(a:list)
@@ -223,12 +280,14 @@ endfunction
 map <leader>cc :call ChangeColorscheme()<CR>
 
 " ----- gutentags settings ----------------------------------------------------
+let g:gutentags_ctags_extra_args = ['--php-kinds=cfit']
 
 let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
                             \ '*.phar', '*.ini', '*.rst', '*.md',
                             \ '*vendor/*/test*', '*vendor/*/Test*',
                             \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
-                            \ '*var/cache*', '*var/log*', '*node_modules*']
+                            \ '*var/cache*', '*var/log*', '*node_modules*',
+                            \ '.vapor/*']
 
 " ----- gutentags settings end ------------------------------------------------
 
@@ -236,7 +295,7 @@ let g:gutentags_ctags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
 " ----- tagbar settings -------------------------------------------------------
 
 "toggle tagbar
-nnoremap <leader>t :TagbarToggle<CR>
+map <leader>t :TagbarToggle<CR>
 
 "autofocus on tagbar window when opened
 let g:tagbar_autofocus = 1
@@ -354,35 +413,14 @@ end
 "  let g:airline_powerline_fonts = 1
 "  let g:airline_theme='understated'
 
-
-"vim-php-cs-fixer
-
-  " If php-cs-fixer is in $PATH, you don't need to define line below
-  " couldn't get the plugin to work without defining this explicitly, even though path was setup correctly
-  let g:php_cs_fixer_path = "~/.composer/vendor/bin/php-cs-fixer" " define the path to the php-cs-fixer.phar
-  
-  " If you use php-cs-fixer version 2.x
-"  let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
-  let g:php_cs_fixer_rules = "@Symfony"          " options: --rules (default:@PSR2)
-  "let g:php_cs_fixer_cache = "~/.php_cs.cache" " options: --cache-file
-  "let g:php_cs_fixer_config_file = '.php_cs' " options: --config
-  " End of php-cs-fixer version 2 config params
-  
-  "let g:php_cs_fixer_php_path = "php"               " Path to PHP
-  let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-  let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-  let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-
 "ultisnips custom snippets dir
 
   let g:UltiSnipsSnippetDirectories = ["UltiSnips", "my-snippets/UltiSnips"]
 
-autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade " Fix blade auto-indent
+"autocmd BufNewFile,BufRead *.blade.php set ft=html | set ft=phtml | set ft=blade " Fix blade auto-indent
 
 "from :help php-indent - classic indentation for case/default in switch statements
 :let g:PHP_vintage_case_default_indent = 1
-
 
 " ----------------------------------------------------------------------------
 " Todo
@@ -410,4 +448,78 @@ let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_frontmatter = 1
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-phpls', 'coc-snippets', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-blade', 'coc-html', 'coc-phpls', 'coc-snippets', 'coc-go', 'coc-php-cs-fixer', 'coc-tsserver', 'coc-eslint', 'coc-deno']
+
+imap <silent><script><expr> <C-P> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+"https://www.sinisterstuf.org/blog/1065/slugify-text-in-vim
+command! Slugify call setline('.', join(split(tolower(substitute(iconv(getline('.'), 'utf8', 'ascii//TRANSLIT'), "[\"']", '', 'g')), '\W\+'), '-'))
+
+" URL encode/decode selection
+vnoremap <leader>en :!python -c 'import sys,urllib;print urllib.quote(sys.stdin.read().strip())'<cr>
+vnoremap <leader>de :!python -c 'import sys,urllib;print urllib.unquote(sys.stdin.read().strip())'<cr>
+
+" remap arrows to resize viewport
+nnoremap <Left> :vertical resize -5<CR>
+nnoremap <Right> :vertical resize +5<CR>
+nnoremap <Up> :resize -5<CR>
+nnoremap <Down> :resize +5<CR>
+
+" show documentation in preview window
+map <leader>d :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+function! ScrollPopup(nlines)
+    let winids = popup_list()
+    if len(winids) == 0
+        return
+    endif
+
+    " Ignore hidden popups
+    let prop = popup_getpos(winids[0])
+    if prop.visible != 1
+        return
+    endif
+
+    let firstline = prop.firstline + a:nlines
+    let buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
+    if firstline < 1
+        let firstline = 1
+    elseif prop.lastline + a:nlines > buf_lastline
+        let firstline = buf_lastline + prop.firstline - prop.lastline
+    endif
+
+    call popup_setoptions(winids[0], {'firstline': firstline})
+endfunction
+
+nnoremap <C-j> :call ScrollPopup(3)<CR>
+nnoremap <C-k> :call ScrollPopup(-3)<CR>
+
+"function! IPhpInsertUse()
+"    call PhpInsertUse()
+"    call feedkeys('a',  'n')
+"endfunction
+"autocmd FileType php inoremap <Leader>u <Esc>:call IPhpInsertUse()<CR>
+"autocmd FileType php noremap <Leader>u :call PhpInsertUse()<CR>
+
+"autocmd FileType php inoremap <C-s> <Esc>:call PhpSortUse()<CR>
+"autocmd FileType php noremap <C-s> :call PhpSortUse()<CR>
+"let g:php_namespace_sort_after_insert = 1
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)

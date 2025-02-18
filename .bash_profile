@@ -16,3 +16,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
+. "/home/xan/.deno/env"
+source /usr/local/etc/bash_completion.d/deno.bash
